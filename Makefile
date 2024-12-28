@@ -1,33 +1,62 @@
 NAME = fdf
+
+# Variables generales
 CC = cc
-RM = rm 
+CFLAGS = -Wall -Wextra -Werror -Iinclude/
+RM = rm
 RMFLAGS = -rf
-CFLAGS = -Wall -Werror -Wextra -g3
-R = r
-INCLUDE = fdf.h
+MKDIR = mkdir -p
+INCLUDE = -I${INCLUDE_DIR}
+# Directorios
 
-SRC = $(wildcard *.c)
-OBJ = $(SRC:.c=.o)
-LIBFT = ./Libft/bin/libft.a
-LIBFT_PATH = ./Libft/
+LIBFT_DIR = Libft/
+LIBFT_BIN = Libft/bin/
+LIBFT_NAME = $(LIBFT_BIN)libft.a
+SRC_DIR = src/
+OBJ_DIR = bin/obj/
+BIN_DIR = bin/
+INCLUDE_DIR = include/
 
+#Files
+FILES = main\
+		check_argv\
+		checkfile_fdf\
+		ft_atoi_base\
+		ft_error\
+		init_map\
+		mlx\
+		read_map
 
+# FILES_ADD
+SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
 
+OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
 
-all: ${NAME}
+# 1ª RULE
+all: $(NAME)
 
-${NAME}:	${OBJ} ${INCLUDE} ${LIBFT}
-	$(CC) $(CFLAGS) ${OBJ} -o ${NAME} ${LIBFT}
+# Comp bin
+$(NAME): $(OBJ) $(LIBFT_NAME)
+	$(MKDIR) $(BIN_DIR)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT_NAME) -o $@
 
-$(LIBFT) : 
-			$(MAKE) -C $(LIBFT_PATH)
- 
+# Comp .O
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(MKDIR) $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Compilar la libft
+$(LIBFT_NAME):
+	$(MAKE) -C $(LIBFT_DIR)
+
+# clean OBJ
 clean:
-	$(RM) $(RMFLAGS) ${OBJ} $(LIBFT)
+	$(RM) $(RMFLAGS) $(OBJ_DIR)
 
-fclean: clean 
-	$(RM) $(RMFLAGS) $(NAME) $(printf) $(LIBFT)
+# clean binary OBJ
+fclean: clean
+	$(RM) $(RMFLAGS) $(BIN_DIR) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
+# Recompilar todo
 re: fclean all
-
-.PHONY: all clean fclean re

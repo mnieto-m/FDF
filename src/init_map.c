@@ -6,25 +6,25 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/12/05 19:07:01 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:11:31 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	count_struct(size_t *row, size_t *len_row, int fd)
+static int	count_struct(int *row, int *len_row, int fd)
 {
 	char	*buffer;
 	int		flag;
 
-	flag = 0;
+	flag = TRUE;
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
 		if (*row == 0)
 			(*len_row) = check_token(buffer, ' ');
 		else if ((*len_row) != check_token(buffer, ' '))
-			flag = 0;
+			flag = FALSE;
 		(*row)++;
 		free(buffer);
 		buffer = get_next_line(fd);
@@ -39,11 +39,11 @@ void ft_datai_init(t_map *map)
 	
 }
 
-void	init_map(char *str, t_map **map)
+void	init_map(char *str, t_map *map)
 {
 	int	fd;
-	size_t	row;
-	size_t	len_row;
+	int	row;
+	int	len_row;
 
 	row = 0;
 	len_row = 0;
@@ -53,14 +53,14 @@ void	init_map(char *str, t_map **map)
 		perror(str);
 		exit(EXIT_FAILURE);
 	}
-	if (count_struct(&row, &len_row, fd) == 0)
+	if (count_struct(&row, &len_row, fd) != TRUE)
 		exit(EXIT_FAILURE);
-	map = malloc(sizeof(t_map) * row * len_row);
+	map = malloc(sizeof(t_map ) +  (row * len_row * sizeof(t_node)));
 	if (!map)
 		exit(EXIT_FAILURE);
 	ft_memset(map, 0 ,sizeof(t_map));
-	(*map)->row = row;
-	(*map)->len_row = len_row;
+	map->row = row;
+	map->len_row = len_row;
 	read_map(str, map, fd);
 }
 

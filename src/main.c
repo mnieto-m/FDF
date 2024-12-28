@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/12/04 00:07:34 by mnieto-m         ###   ########.fr       */
+/*   Created: 2024/11/05 20:49:11 by mnieto-m          #+#    #+#             */
+/*   Updated: 2024/12/11 17:03:05 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void fail_read(char *str, t_map **map)
+int	main(int argc, char **argv)
 {
-	free(*map);
-	perror(str);
-	exit(EXIT_FAILURE);
+	t_map	*map;
+	
+	map = NULL;
+	if (check_argv(argc, argv))
+		return(EXIT_FAILURE);
+	init_map(argv[1], map);
+	
+	return (0);
 }

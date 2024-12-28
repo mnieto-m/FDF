@@ -6,11 +6,12 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/12/05 19:23:01 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:39:03 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 char	*ft_strjoin_free(char *s1, char *s2)
 {
 	size_t	l1;
@@ -38,38 +39,70 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
-int read_map(char *str, t_map **map, int fd)
+int	read_map(char *str, t_map *map, int fd)
 {
-	static char *buffer;
-	char *aux;
-	int flag;
+	static char	*buffer;
+	char		*aux;
+	int			flag;
 
 	flag = TRUE;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		fail_read(str , map);
+		fail_read(str, map);
 	aux = get_next_line(fd);
-	while(aux)
+	while (aux)
 	{
 		buffer = ft_strjoin_free(buffer, aux);
 		aux = get_next_line(fd);
 	}
-	if (!set_number(buffer, map))
-		flag = FALSE;
+	set_value(buffer, map);
 	free(buffer);
-	return(flag);
+	buffer = NULL;
+	return (flag);
 }
 
 
-int set_number(char *str, t_map **map)
+
+
+int	set_number(char *str, t_map *map)
 {
-	int i;
-	int flag ;
-
-	i = 0;
-	ft_split(str, ' ');
-	ft_atoi_signal(str, &flag);
-
-	return(i + 1);
+	int		value_x;
+	int		value_y;
+	int		value_z;
+	long 	color;
+	int		index;
+	char	**aux;
 	
+
+	value_x = 0;
+
+	value_y = 0;
+	index = 0;
+	aux = ft_split(str, ' ');
+	while (value_x != (map)->row)
+	{
+		value_y = 0;
+		while(value_y < (map)->len_row)
+		{
+			index = value_x* (map)->len_row + value_y;
+			printf("perro\n");
+			(map)->tab[index].xyz[0] = value_x;
+			map->tab[index].xyz[1] = value_y;
+			(map)->tab[index].xyz[2] = ft_atoi(aux[value_x]);
+			if (ft_strchr(*aux,','))
+			{
+				color = ft_atoi_base(aux[value_x], HEXADECIMAL);
+				printf("%zu", color);
+			}
+			else
+			{
+				color = ft_atoi_base("0xFFFFFF", HEXADECIMAL);
+				printf("%zu", color);
+			}
+			value_y ++;
+		}
+		printf("\n");
+		value_x++;
+	}
+	return(0);
 }

@@ -6,3 +6,10 @@
 
 #ignore ALL .a files
 *.a
+
+#ignore ALL .fdf files
+*.fdf
+
+Libft
+
+a.out
