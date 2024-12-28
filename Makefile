@@ -2,7 +2,7 @@ NAME = fdf
 
 # Variables generales
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinclude/
+CFLAGS = -Wall -Wextra -Werror -g3 -I
 RM = rm
 RMFLAGS = -rf
 MKDIR = mkdir -p
