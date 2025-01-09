@@ -6,11 +6,11 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/12/11 17:02:14 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:22:01 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../include/fdf.h"
 
 void fail_read(char *str, t_map *map)
 {

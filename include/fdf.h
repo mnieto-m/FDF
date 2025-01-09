@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/12/28 18:11:36 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:20:02 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define TRUE 0
 # define FALSE 1
 # define HEXADECIMAL "0123456789ABCDEF"
+# define W_CENTER_DEFAULT 960.0
+# define H_CENTER_DEFAULT 540.0
 
 //struct mlx
 typedef struct s_mini_mlx
@@ -31,6 +33,8 @@ typedef struct s_mini_mlx
 	void	*mlx_win;
 	void	*img;
 	void	*img_addr;
+	double	h_center_pt;
+	double	w_center_pt;
 }			t_mlx;
 
 typedef struct s_node
@@ -42,21 +46,21 @@ typedef struct s_node
 
 typedef struct s_map_mdata
 {
-	int	row;
-	int	len_row;
-	int	max_value;
-	int	min_value;
+	int		row;
+	int		len_row;
+	int		max_value;
+	int		min_value;
 	t_mlx	*mini_mlx;
 	t_node	tab[];
 }			t_map;
 
 int			checkfile_fdf(char *str);
-void		init_map(char *str,t_map *map);
+void		init_map(char *str, t_map *map);
 int			check_argv(int argc, char **argv);
 void		fail_read(char *str, t_map *map);
-int		read_map(char *str, t_map *map , int fd);
-int 	set_number(char *str, t_map *map);
-int				ft_atoi_base(char *str, char *base_from);
+int			read_map(char *str, t_map *map, int fd);
+void		set_value(char *str, t_map *map);
+int			ft_atoi_base(char *str, char *base_from);
 
 #endif
 

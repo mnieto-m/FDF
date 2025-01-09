@@ -6,11 +6,11 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:12:04 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/11/22 16:39:50 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:22:29 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../include/fdf.h"
 
 int	check_argv(int argc, char **argv)
 {

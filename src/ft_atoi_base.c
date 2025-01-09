@@ -6,11 +6,12 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:52:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/12/28 17:52:28 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:22:16 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../include/fdf.h"
+
 static int		ft_get_val(char c, char *base)
 {
 	int i;

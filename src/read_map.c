@@ -6,11 +6,11 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/12/12 20:39:03 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:12:15 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../include/fdf.h"
 
 char	*ft_strjoin_free(char *s1, char *s2)
 {
@@ -60,11 +60,7 @@ int	read_map(char *str, t_map *map, int fd)
 	buffer = NULL;
 	return (flag);
 }
-
-
-
-
-int	set_number(char *str, t_map *map)
+void	set_value(char *str, t_map *map)
 {
 	int		value_x;
 	int		value_y;
@@ -75,16 +71,15 @@ int	set_number(char *str, t_map *map)
 	
 
 	value_x = 0;
-
-	value_y = 0;
+	value_z = 0;
 	index = 0;
 	aux = ft_split(str, ' ');
 	while (value_x != (map)->row)
 	{
 		value_y = 0;
+		index = value_x * (map)->len_row + value_y;
 		while(value_y < (map)->len_row)
 		{
-			index = value_x* (map)->len_row + value_y;
 			printf("perro\n");
 			(map)->tab[index].xyz[0] = value_x;
 			map->tab[index].xyz[1] = value_y;
@@ -104,5 +99,7 @@ int	set_number(char *str, t_map *map)
 		printf("\n");
 		value_x++;
 	}
-	return(0);
 }
+
+
+// repasar codigo no me acuerdo de nada :.....(
