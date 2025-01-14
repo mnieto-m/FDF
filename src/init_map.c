@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/07 21:25:46 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/12 16:53:30 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void ft_datai_init(t_map *map)
 	ft_memset(map, 0 ,sizeof(t_map));
 	map->mini_mlx->h_center_pt = H_CENTER_DEFAULT;
 	map->mini_mlx->w_center_pt = W_CENTER_DEFAULT;
-	
+	map->mini_mlx->mlx= mlx_init(WIDTH, HEIGHT, "FDF", true);
 }
 
 void	init_map(char *str, t_map *map)

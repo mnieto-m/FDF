@@ -65,4 +65,6 @@ fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 # Recompilar todo
-re: fclean all
+re: fclean all 
+
+.PHONY: all, clean, fclean, libmlx
