@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/12 16:53:30 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:10:52 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,15 @@ static int	count_struct(int *row, int *len_row, int fd)
 void ft_datai_init(t_map *map)
 {
 	ft_memset(map, 0 ,sizeof(t_map));
-	map->mini_mlx->h_center_pt = H_CENTER_DEFAULT;
-	map->mini_mlx->w_center_pt = W_CENTER_DEFAULT;
-	map->mini_mlx->mlx= mlx_init(WIDTH, HEIGHT, "FDF", true);
+	map->mlx->h_center_pt = H_CENTER_DEFAULT;
+	map->mlx->w_center_pt = W_CENTER_DEFAULT;
+	map->mlx->mlx = mlx_init(WIDTH,HEIGHT,"FDF", 1);
+	if(!map->mlx->mlx)
+		ft_error(map);
+	map->mlx->img = mlx_new_image(map->mlx, 256, 256);
+	if(!map->mlx->img)
+		ft_error(map);
+		
 }
 
 void	init_map(char *str, t_map *map)

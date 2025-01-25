@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/12 16:49:37 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/23 21:51:16 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,20 @@ typedef struct s_map_mdata
 	int			len_row;
 	int			max_value;
 	int			min_value;
-	t_mlx		*mini_mlx;
+	t_mlx		*mlx;
 	t_node		tab[];
 }				t_map;
 
 int				checkfile_fdf(char *str);
 void			init_map(char *str, t_map *map);
 int				check_argv(int argc, char **argv);
-void			fail_read(char *str, t_map *map);
 int				read_map(char *str, t_map *map, int fd);
 void			set_value(char *str, t_map *map);
 int				ft_atoi_base(char *str, char *base_from);
+void			ft_hook(void *param);
+void			fail_read(char *str, t_map *map);
+int				ft_free_screen(t_map *map);
+void			fail_read(char *str, t_map *map);
 
 #endif
 
