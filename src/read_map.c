@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/07 17:12:15 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:17:52 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	read_map(char *str, t_map *map, int fd)
 	buffer = NULL;
 	return (flag);
 }
-void	set_value(char *str, t_map *map)
+/*void	set_value(char *str, t_map *map)
 {
 	int		value_x;
 	int		value_y;
@@ -99,7 +99,67 @@ void	set_value(char *str, t_map *map)
 		printf("\n");
 		value_x++;
 	}
+}*/
+void set_value(char *str, t_map *map)
+{
+    int value_x = 0;
+    int value_y = 0;
+    int value_z = 0;
+    long color = 0;
+    int index = 0;
+    char **aux;
+    char **z_and_color;
+
+    aux = ft_split(str, ' '); // Dividir la entrada en elementos separados por espacio
+    if (!aux)
+        return; // Manejar errores en caso de que ft_split falle
+
+    // Usamos while para iterar sobre las filas y columnas
+    while (value_x < map->row)
+    {
+        // Comenzar con la primera columna
+        if (value_y < map->len_row)
+        {
+            index = value_x * map->len_row + value_y;
+
+            // Dividir cada valor en coordenada Z y color si es necesario
+            z_and_color = ft_split(aux[index], ','); // Accedemos al índice lineal
+            value_z = ft_atoi(z_and_color[0]); // Obtener la coordenada Z
+
+            if (z_and_color[1]) // Si hay un color explícito
+                color = ft_atoi_base(z_and_color[1], HEXADECIMAL);
+            else
+                color = ft_atoi_base("0xFFFFFF", HEXADECIMAL); // Color por defecto
+
+            // Liberar memoria del split intermedio
+            free(z_and_color);
+
+            // Asignar valores a la estructura
+            map->tab[index].xyz[0] = value_x;
+            map->tab[index].xyz[1] = value_y;
+            map->tab[index].xyz[2] = value_z;
+            map->tab[index].color = color;
+
+            value_y++; // Avanzar a la siguiente columna
+        }
+        else
+        {
+            // Si llegamos al final de la fila, pasar a la siguiente
+            value_y = 0;
+            value_x++;
+        }
+    }
+
+    // Liberar memoria de aux
+    int i = 0;
+    while (aux[i])
+    {
+        free(aux[i]);
+        i++;
+    }
+    free(aux);
 }
+
 
 
 // repasar codigo no me acuerdo de nada :.....(

@@ -6,15 +6,15 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/23 22:09:47 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:54:25 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-
-static int ft_free_map(t_node *tab,t_map *map)
+/* 
+static void ft_free_map(t_node *tab,t_map *map)
 {
-	size_t i;
+	int i;
 	
 	i = 0;
 	
@@ -24,7 +24,7 @@ static int ft_free_map(t_node *tab,t_map *map)
 			free(&tab[i]);
 	}
 	free(map);
-}
+} */
 void fail_read(char *str, t_map *map)
 {
 	free(map);
@@ -43,11 +43,11 @@ int ft_free_screen(t_map *map)
 	{
 		
 		if(map->mlx->img)
-			mlx_delete_image(map->mlx->img);
+			mlx_delete_image(map->mlx->mlx, map->mlx->img);
 		if(map->mlx->mlx)
 			mlx_terminate(map->mlx->mlx);
-		if(map->tab)
-			ft_free_map(&(map->tab) ,&map);
+/* 		if(map->tab)
+			ft_free_map(&(map->tab) ,&map); */
 	}
 	exit(EXIT_FAILURE);
 }

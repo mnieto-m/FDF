@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/23 17:10:52 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:54:41 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void ft_datai_init(t_map *map)
 	map->mlx->mlx = mlx_init(WIDTH,HEIGHT,"FDF", 1);
 	if(!map->mlx->mlx)
 		ft_error(map);
-	map->mlx->img = mlx_new_image(map->mlx, 256, 256);
+	map->mlx->img = mlx_new_image(map->mlx->mlx, 256, 256);
 	if(!map->mlx->img)
 		ft_error(map);
 		

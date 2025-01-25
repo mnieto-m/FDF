@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/23 21:51:16 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:29:55 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../Libft/include/libft.h"
 # include "MLX42/MLX42.h"
-# include <MLX42.h>
+
 
 // agregar makefile carol
 
@@ -62,9 +62,9 @@ int				read_map(char *str, t_map *map, int fd);
 void			set_value(char *str, t_map *map);
 int				ft_atoi_base(char *str, char *base_from);
 void			ft_hook(void *param);
-void			fail_read(char *str, t_map *map);
 int				ft_free_screen(t_map *map);
 void			fail_read(char *str, t_map *map);
+void			ft_error(t_map *map);
 
 #endif
 

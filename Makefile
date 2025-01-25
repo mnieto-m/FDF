@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -g3 -I
 RM = rm
 RMFLAGS = -rf
 MKDIR = mkdir -p
-INCLUDE = -I${INCLUDE_DIR}
+INCLUDE = -I${INCLUDE_DIR} -I $(LIBMLX)/include
 # Directorios
 
 LIBFT_DIR = Libft/
@@ -26,7 +26,8 @@ FILES = fdf\
 		ft_error\
 		init_map\
 		mlx\
-		read_map
+		read_map\
+		hooks
 
 # FILES_ADD
 LIBS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
@@ -58,6 +59,7 @@ $(LIBFT_NAME):
 # clean OBJ
 clean:
 	$(RM) $(RMFLAGS) $(OBJ_DIR)
+	$(RM) $(RMFLAGS) $(LIBMLX)/build
 
 # clean binary OBJ
 fclean: clean

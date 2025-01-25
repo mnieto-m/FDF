@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:49:11 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/23 18:19:58 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:35:01 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ int	main(int argc, char **argv)
 	if (check_argv(argc, argv))
 		return(EXIT_FAILURE);
 	init_map(argv[1], map);
-	ft_print_img(map);
+/* 	ft_print_img(map);
 	ft_hook(map);
-	
-	ft_freescreem(map);
+	ft_free_screem(map); */
 	
 	return (0);
 }
