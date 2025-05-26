@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_print_img.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 20:49:11 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 20:57:29 by mnieto-m         ###   ########.fr       */
+/*   Created: 2025/01/28 18:36:46 by mnieto-m          #+#    #+#             */
+/*   Updated: 2025/01/28 18:37:21 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-
-int	main(int argc, char **argv)
+ft_print_img(t_map *map)
 {
-	t_map	*map;
-
-	map = NULL;
-	if (check_argv(argc, argv))
-		return (EXIT_FAILURE);
-	init_map(argv[1], map);
-	// Calcular la proyeccion de los puntos
-	init_proyection(map);
-	ft_print_img(map);
-	ft_hook(map);
-	ft_free_screem(map);
-	return (0);
+	
 }

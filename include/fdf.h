@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/25 18:29:55 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/05/26 20:56:14 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 # include "../Libft/include/libft.h"
 # include "MLX42/MLX42.h"
+# include "math.h"
 
 
 // agregar makefile carol
 
 # define WIDTH 1080
 # define HEIGHT 1920
+# define INIT_SCALE 12
 
 # define TRUE 0
 # define FALSE 1
@@ -65,6 +67,14 @@ void			ft_hook(void *param);
 int				ft_free_screen(t_map *map);
 void			fail_read(char *str, t_map *map);
 void			ft_error(t_map *map);
+void 			init_proyection(t_map *map);
+double *xy_projection(double xyz[3]);
+double	*matrix_mult_square(double **m1, double** m2, double **rslt);
+double	*matrix_mult(double m[3][3], double pt[3]);
+double *scale(int factor, double xyz[3]);
+double	**get_isometric(void);
+double *matrix_init(void);
+void matrix_free(double **m);
 
 #endif
 

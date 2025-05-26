@@ -25,7 +25,6 @@ FILES = fdf\
 		ft_atoi_base\
 		ft_error\
 		init_map\
-		mlx\
 		read_map\
 		hooks
 
