@@ -6,13 +6,13 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:24:40 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 21:01:05 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/05/26 21:35:36 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-double	*matrix_mult(t_map *map,double m[3][3], double pt[3])
+double	*matrix_mult(t_map *map, double m[3][3], double pt[3])
 {
 	int		i;
 	int		j;
@@ -33,13 +33,13 @@ double	*matrix_mult(t_map *map,double m[3][3], double pt[3])
 	return (rslt);
 }
 // esto esta mal ??!!!!!
-double	*matrix_mult_square(t_map *map, double *m1, double* m2, double *rslt)
+double	*matrix_mult_square(t_map *map, double *m1, double *m2, double *rslt)
 {
-	int		i;
-	int		j;
-	int		k;
-	// double	rslt[3][3];
+	int	i;
+	int	j;
+	int	k;
 
+	// double	rslt[3][3];
 	// rslt = ft_calloc(1, 3 * 3 * sizeof(double));
 	// if (!rslt)
 	// 	return (NULL);
@@ -53,7 +53,8 @@ double	*matrix_mult_square(t_map *map, double *m1, double* m2, double *rslt)
 			// rslt[i][j] = 0;
 			while (++k < 3)
 			{
-				rslt[i* map->len_row + j] += m1[i* map->len_row + j] * m2[j* map->len_row + i];
+				rslt[i * map->len_row + j] += m1[i * map->len_row + j] * m2[j
+					* map->len_row + i];
 			}
 		}
 	}
@@ -86,28 +87,33 @@ double	*matrix_mult_square(t_map *map, double *m1, double* m2, double *rslt)
 // 	return (rslt);
 // }
 
-double *xy_projection(double xyz[3])
+double	*xy_projection(t_map *map, double xyz[3])
 {
-	const m[3][3] = {
-		{1, 0, 0}, 
-		{0, 1, 0},
-		{0, 0, 0}
-	};
-	return (matrix_mult(m, xyz));
+	double	m[3][3];
+
+	m[0][0] = 1;
+	m[0][1] = 0;
+	m[0][2] = 0;
+	m[1][0] = 0;
+	m[1][1] = 1;
+	m[1][2] = 0;
+	m[2][0] = 0;
+	m[2][1] = 0;
+	m[2][2] = 0;
+	return (matrix_mult(map, m, xyz));
 }
 
-double *matrix_init()
+double	*matrix_init(void)
 {
 	double	*rslt;
 
-	rslt = ft_calloc(1, 3 *3* sizeof(double *));
+	rslt = ft_calloc(1, 3 * 3 * sizeof(double *));
 	if (!rslt)
 		return (NULL);
-	
-	return(rslt);	
+	return (rslt);
 }
 
-void matrix_free(double *m)
+void	matrix_free(double *m)
 {
 	if (m)
 	{

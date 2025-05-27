@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 20:56:14 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:19:18 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # include "../Libft/include/libft.h"
 # include "MLX42/MLX42.h"
-# include "math.h"
-
+# include <math.h>
 
 // agregar makefile carol
 
@@ -30,7 +29,7 @@
 # define W_CENTER_DEFAULT 960.0
 # define H_CENTER_DEFAULT 540.0
 
-//struct mlx
+// struct mlx
 typedef struct s_mini_mlx
 {
 	mlx_t		*mlx;
@@ -67,16 +66,19 @@ void			ft_hook(void *param);
 int				ft_free_screen(t_map *map);
 void			fail_read(char *str, t_map *map);
 void			ft_error(t_map *map);
-void 			init_proyection(t_map *map);
-double *xy_projection(double xyz[3]);
-double	*matrix_mult_square(double **m1, double** m2, double **rslt);
-double	*matrix_mult(double m[3][3], double pt[3]);
-double *scale(int factor, double xyz[3]);
-double	**get_isometric(void);
-double *matrix_init(void);
-void matrix_free(double **m);
+void			init_proyection(t_map *map);
+double			*xy_projection(t_map *map, double xyz[3]);
+double			*matrix_mult_square(t_map *map, double *m1, double *m2,
+					double *rslt);
+double			*matrix_mult(t_map *map, double m[3][3], double pt[3]);
+double			*scale(t_map *map, int factor, double xyz[3]);
+double			*get_isometric(void);
+double			*matrix_init(void);
+void			matrix_free(double *m);
+double			*matrix_mult_isometric(t_map *map, double *trans);
 
 #endif
 
-/* 3W test.c ./MLX42/build/libmlx42.a -IMLX42/include/MLX42 -ldl -lglfw -pthread
+/* 3W test.c ./MLX42/build/libmlx42.a -IMLX42/include/MLX42 -ldl -lglfw
+	-pthread
 	-lm */

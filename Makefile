@@ -2,11 +2,11 @@ NAME = fdf
 
 # Variables generales
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -I
+CFLAGS = -Wall -Wextra -Werror -g3
 RM = rm
 RMFLAGS = -rf
 MKDIR = mkdir -p
-INCLUDE = -I${INCLUDE_DIR} -I $(LIBMLX)/include
+INCLUDE = -I ${INCLUDE_DIR} -I $(LIBMLX)/include
 # Directorios
 
 LIBFT_DIR = Libft/
@@ -26,7 +26,10 @@ FILES = fdf\
 		ft_error\
 		init_map\
 		read_map\
-		hooks
+		hooks\
+		ft_print_img\
+		isometric\
+		matrix_oper
 
 # FILES_ADD
 LIBS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
@@ -44,9 +47,9 @@ libmlx:
 # Comp bin
 $(NAME): $(OBJ) $(LIBFT_NAME)
 	$(MKDIR) $(BIN_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT_NAME) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT_NAME) -o $(NAME) $(LIBS)
 
-# Comp .O
+# Comp .o
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(MKDIR) $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@

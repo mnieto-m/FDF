@@ -6,13 +6,14 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 18:36:46 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/01/28 18:37:21 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/05/26 21:11:30 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-ft_print_img(t_map *map)
+void ft_print_img(t_map *map)
 {
-	
+	(void)map;
+	return;
 }
