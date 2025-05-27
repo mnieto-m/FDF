@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 20:58:43 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:51:42 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	count_struct(int *row, int *len_row, int fd)
 	close(fd);
 	return (flag);
 }
-void ft_datai_init(t_map *map)
+static void init_mlx(t_map *map)
 {
 	ft_memset(map, 0 ,sizeof(t_map));
 	map->mlx->h_center_pt = H_CENTER_DEFAULT;
@@ -46,7 +46,7 @@ void ft_datai_init(t_map *map)
 		
 }
 
-void	init_map(char *str, t_map *map)
+void	init_map_mlx(char *str, t_map *map)
 {
 	int	fd;
 	int	row;
@@ -65,10 +65,11 @@ void	init_map(char *str, t_map *map)
 	map = malloc(sizeof(t_map ) +  (row * len_row * sizeof(t_node)));
 	if (!map)
 		exit(EXIT_FAILURE);
-	ft_datai_init(map);
+	init_mlx(map);
 	map->row = row;
 	map->len_row = len_row;
-	read_map(str, map, fd);
+	if (read_map(str, map, fd) == 1)
+		ft_error(map);
 }
 
 

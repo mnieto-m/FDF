@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 21:20:20 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:45:48 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,7 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
-int	read_map(char *str, t_map *map, int fd)
-{
-	static char	*buffer;
-	char		*aux;
-	int			flag;
 
-	flag = TRUE;
-	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		fail_read(str, map);
-	aux = get_next_line(fd);
-	while (aux)
-	{
-		buffer = ft_strjoin_free(buffer, aux);
-		aux = get_next_line(fd);
-	}
-	set_value(buffer, map);
-	free(buffer);
-	buffer = NULL;
-	return (flag);
-}
 /*void	set_value(char *str, t_map *map)
 {
 	int		value_x;
@@ -100,7 +80,7 @@ int	read_map(char *str, t_map *map, int fd)
 		value_x++;
 	}
 }*/
-void set_value(char *str, t_map *map)
+static void set_value(char *str, t_map *map)
 {
     int value_x = 0;
     int value_y = 0;
@@ -161,5 +141,26 @@ void set_value(char *str, t_map *map)
 }
 
 
+int	read_map(char *str, t_map *map, int fd)
+{
+	static char	*buffer;
+	char		*aux;
+	int			flag;
+
+	flag = TRUE;
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
+		fail_read(str, map);
+	aux = get_next_line(fd);
+	while (aux)
+	{
+		buffer = ft_strjoin_free(buffer, aux);
+		aux = get_next_line(fd);
+	}
+	set_value(buffer, map);
+	free(buffer);
+	buffer = NULL;
+	return (flag);
+}
 
 // repasar codigo no me acuerdo de nada :.....(

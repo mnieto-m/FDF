@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/27 19:19:18 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:48:06 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define HEIGHT 1920
 # define INIT_SCALE 12
 
+//TODO: poner los booleans bien
 # define TRUE 0
 # define FALSE 1
 # define HEXADECIMAL "0123456789ABCDEF"
@@ -56,11 +57,12 @@ typedef struct s_map_mdata
 	t_node		tab[];
 }				t_map;
 
-int				checkfile_fdf(char *str);
-void			init_map(char *str, t_map *map);
-int				check_argv(int argc, char **argv);
+//init map, read map
+void			init_map_mlx(char *str, t_map *map);
 int				read_map(char *str, t_map *map, int fd);
-void			set_value(char *str, t_map *map);
+
+int				checkfile_fdf(char *str);
+int				check_argv(int argc, char **argv);
 int				ft_atoi_base(char *str, char *base_from);
 void			ft_hook(void *param);
 int				ft_free_screen(t_map *map);

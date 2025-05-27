@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 20:58:03 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:51:15 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ static void ft_free_map(t_node *tab,t_map *map)
 } */
 void fail_read(char *str, t_map *map)
 {
-	free(map);
+	if(map)
+		free(map); //FREE t_node y t_mlx antes
 	perror(str);
 	exit(EXIT_FAILURE);
 }
 void ft_error(t_map *map)
 {
-	free(map);
+	if(map)
+		free(map);//FREE t_node y t_mlx antes
 	exit(EXIT_FAILURE);
 }
 
