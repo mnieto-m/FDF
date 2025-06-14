@@ -20,8 +20,8 @@ LIBMLX	= ./MLX42
 
 #Files
 FILES = fdf\
-		check_argv\
-		checkfile_fdf\
+		parse\check_argv\
+		parse\checkfile_fdf\
 		ft_atoi_base\
 		ft_error\
 		init_map\

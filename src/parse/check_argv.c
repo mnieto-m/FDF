@@ -23,7 +23,7 @@ int	check_argv(int argc, char **argv)
 	{
 		ft_putstr_fd(strerror(EINVAL), 1);
 		if (argc > 2)
-			ft_putstr_fd(": To many arguments", 1);
+			ft_putstr_fd(": Too many arguments", 1);
 		else if (argc < 2)
 			ft_putstr_fd(": To less arguments", 1);
 		ft_putstr_fd("\nCorrect imput: ./fdf <file.fdf>", 1);

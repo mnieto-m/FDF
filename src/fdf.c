@@ -12,6 +12,11 @@
 
 #include "../include/fdf.h"
 
+/** 
+ * rows
+ * tab es un un array unidireccional
+ * 
+ */
 
 int	main(int argc, char **argv)
 {
