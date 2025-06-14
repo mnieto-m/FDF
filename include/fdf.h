@@ -77,9 +77,15 @@ double			*matrix_init(void);
 void			matrix_free(double *m);
 double			*matrix_mult_isometric(t_map *map, double *trans);
 
-/* error */
-void			fdf_error(char *str, t_map *map);
+/* error ---------------------------------------------------- */
+void			fdf_exit_error(char *str, t_map *map);
 // void			fail_read(char *str, t_map *map);
+
+/* struct utils --------------------------------------------- */
+void			fdf_tmap_init(int row_count, int col_count, t_map *map);
+void			fdf_tmap_free(t_map *map);
+void			fdf_tnode_print(t_node *node);
+void			fdf_tnodes_print_xyz(int rows, int cols, t_node *node);
 
 #endif
 

@@ -22,14 +22,17 @@ LIBMLX	= ./MLX42
 FILES = fdf\
 		parse/check_argv\
 		parse/checkfile_fdf\
+		parse/read_map\
 		ft_atoi_base\
 		error/ft_error\
 		init_map\
-		read_map\
 		hooks\
 		ft_print_img\
 		isometric\
-		matrix_oper
+		matrix_oper \
+		structs/tmap.c \
+		structs/tnode.c
+
 
 # FILES_ADD
 LIBS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm

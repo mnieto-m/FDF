@@ -26,12 +26,14 @@ static void	ft_free_map(t_node *tab,t_map *map)
 	free(map);
 } */
 
+// NOTE: can be static
 void	fdf_print_error(char *str)
 {
 	perror(str);
 	exit(EXIT_FAILURE);
 }
 
+// NOTE: delete
 // void	fail_read(char *str, t_map *map)
 // {
 // 	if (map)
@@ -40,7 +42,7 @@ void	fdf_print_error(char *str)
 // 	exit(EXIT_FAILURE);
 // }
 
-void	fdf_error(char *str, t_map *map)
+void	fdf_exit_error(char *str, t_map *map)
 {
 	if (map)
 		free(map); // FREE t_node y t_mlx antes

@@ -12,6 +12,14 @@
 
 #include "../include/fdf.h"
 
+/**
+ * @brief Reads the file on fd, and saves the nbr of rows on row
+ *
+ * @param row
+ * @param len_row
+ * @param fd
+ * @return int
+ */
 static int	count_struct(int *row, int *len_row, int fd)
 {
 	char	*buffer;
@@ -32,19 +40,6 @@ static int	count_struct(int *row, int *len_row, int fd)
 	close(fd);
 	return (flag);
 }
-static void init_mlx(t_map *map)
-{
-	ft_memset(map, 0 ,sizeof(t_map));
-	map->mlx->h_center_pt = H_CENTER_DEFAULT;
-	map->mlx->w_center_pt = W_CENTER_DEFAULT;
-	map->mlx->mlx = mlx_init(WIDTH,HEIGHT,"FDF", 1);
-	if(!map->mlx->mlx)
-		fdf_error(NULL, map);
-	map->mlx->img = mlx_new_image(map->mlx->mlx, 256, 256);
-	if(!map->mlx->img)
-		fdf_error(NULL, map);
-		
-}
 
 void	init_map_mlx(char *str, t_map *map)
 {
@@ -56,28 +51,24 @@ void	init_map_mlx(char *str, t_map *map)
 	len_row = 0;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-	{
-		perror(str);
-		exit(EXIT_FAILURE);
-	}
+		fdf_exit_error(NULL, map); // map en null
+	// NOTE: len_row is col
+	// NOTE: int *row can be directly &(map->row) (the same for col)
 	if (count_struct(&row, &len_row, fd) != TRUE)
-		exit(EXIT_FAILURE);
-	map = malloc(sizeof(t_map ) +  (row * len_row * sizeof(t_node)));
+		fdf_exit_error(NULL, map); // map es null
+	map = malloc(sizeof(t_map) + (row * len_row * sizeof(t_node)));
 	if (!map)
-		exit(EXIT_FAILURE);
-	init_mlx(map);
-	map->row = row;
-	map->len_row = len_row;
-	if (read_map(str, map, fd) == 1)
-		fdf_error(NULL, map);
+		fdf_exit_error(NULL, map); // map es null
+	fdf_tmap_init(row, len_row, map);
+	if (read_map(str, map, fd) != TRUE)
+		fdf_exit_error(NULL, map);
 }
 
-
 /*
-- leer el mapa en char gigante split por espacio y luego comprobar que todas las lineas tenga el mismo numeor de columas 
-- comprobar si son del mismo tamaño las mismas lineas 
+- leer el mapa en char gigante split por espacio y luego comprobar que todas las lineas tenga el mismo numeor de columas
+- comprobar si son del mismo tamaño las mismas lineas
 - numeros no pueden dar overflow aka no tenga flow sean toys
-- split por espacios por coma para color 
+- split por espacios por coma para color
 
 
 ((t_node *[lenrow])map)[][];
