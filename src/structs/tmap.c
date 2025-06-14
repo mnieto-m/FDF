@@ -39,5 +39,8 @@ void	fdf_tmap_print(t_map *map)
 	printf("\tlen_row:\t%i\n", map->len_row);
 	printf("\tmax_value:\t%i\n", map->max_value);
 	printf("\tmin_value:\t%i\n", map->min_value);
+	printf("node array input:");
 	fdf_tnodes_print_xyz(map->row, map->len_row, map->tab);
+	printf("node array window");
+	fdf_tnodes_print_w_xy(map->row, map->len_row, map->tab);
 }

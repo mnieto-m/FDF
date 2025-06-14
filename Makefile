@@ -30,8 +30,8 @@ FILES = fdf \
 		mlx/ft_print_img \
 		matrix/isometric \
 		matrix/matrix_oper \
-		structs/tmap.c \
-		structs/tnode.c
+		structs/tmap \
+		structs/tnode
 
 
 # FILES_ADD

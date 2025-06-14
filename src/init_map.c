@@ -13,7 +13,7 @@
 #include "../include/fdf.h"
 
 /**
- * @brief Reads the file on fd, and saves the nbr of rows on row
+ * @brief Reads the file on fd, and saves the nbr of rows and cols
  *
  * @param row
  * @param len_row

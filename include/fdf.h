@@ -84,9 +84,9 @@ void			fdf_exit_error(char *str, t_map *map);
 /* struct utils --------------------------------------------- */
 void			fdf_tmap_init(int row_count, int col_count, t_map *map);
 void			fdf_tmap_free(t_map *map);
-void			fdf_tnode_print(t_node *node);
 void			fdf_tnodes_print_xyz(int rows, int cols, t_node *node);
 void			fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes);
+void			fdf_tnode_init(int row, int col, char **input, t_map *map);
 #endif
 
 /* 3W test.c ./MLX42/build/libmlx42.a -IMLX42/include/MLX42 -ldl -lglfw
