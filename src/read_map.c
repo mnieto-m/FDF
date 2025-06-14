@@ -150,7 +150,7 @@ int	read_map(char *str, t_map *map, int fd)
 	flag = TRUE;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		fail_read(str, map);
+		fdf_error(str, map);
 	aux = get_next_line(fd);
 	while (aux)
 	{

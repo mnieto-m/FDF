@@ -23,7 +23,7 @@
 # define HEIGHT 1920
 # define INIT_SCALE 12
 
-//TODO: poner los booleans bien
+// TODO: poner los booleans bien
 # define TRUE 0
 # define FALSE 1
 # define HEXADECIMAL "0123456789ABCDEF"
@@ -57,7 +57,7 @@ typedef struct s_map_mdata
 	t_node		tab[];
 }				t_map;
 
-//init map, read map
+// init map, read map
 void			init_map_mlx(char *str, t_map *map);
 int				read_map(char *str, t_map *map, int fd);
 
@@ -66,8 +66,6 @@ int				check_argv(int argc, char **argv);
 int				ft_atoi_base(char *str, char *base_from);
 void			ft_hook(void *param);
 int				ft_free_screen(t_map *map);
-void			fail_read(char *str, t_map *map);
-void			ft_error(t_map *map);
 void			init_proyection(t_map *map);
 double			*xy_projection(t_map *map, double xyz[3]);
 double			*matrix_mult_square(t_map *map, double *m1, double *m2,
@@ -78,6 +76,10 @@ double			*get_isometric(void);
 double			*matrix_init(void);
 void			matrix_free(double *m);
 double			*matrix_mult_isometric(t_map *map, double *trans);
+
+/* error */
+void			fdf_error(char *str, t_map *map);
+// void			fail_read(char *str, t_map *map);
 
 #endif
 

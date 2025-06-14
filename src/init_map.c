@@ -39,10 +39,10 @@ static void init_mlx(t_map *map)
 	map->mlx->w_center_pt = W_CENTER_DEFAULT;
 	map->mlx->mlx = mlx_init(WIDTH,HEIGHT,"FDF", 1);
 	if(!map->mlx->mlx)
-		ft_error(map);
+		fdf_error(NULL, map);
 	map->mlx->img = mlx_new_image(map->mlx->mlx, 256, 256);
 	if(!map->mlx->img)
-		ft_error(map);
+		fdf_error(NULL, map);
 		
 }
 
@@ -69,7 +69,7 @@ void	init_map_mlx(char *str, t_map *map)
 	map->row = row;
 	map->len_row = len_row;
 	if (read_map(str, map, fd) == 1)
-		ft_error(map);
+		fdf_error(NULL, map);
 }
 
 
