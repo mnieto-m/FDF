@@ -36,3 +36,23 @@ void	fdf_tnodes_print_xyz(int rows, int cols, t_node *nodes)
 		x++;
 	}
 }
+
+void	fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes)
+{
+	int	x;
+	int	y;
+	int	idx;
+
+	x = 0;
+	while (x < rows)
+	{
+		while (y < cols)
+		{
+			idx =  (x * rows) + y;
+			printf("\t(%i,%i)", nodes[idx].w_xyz[0], nodes[idx].w_xyz[1]);
+			y++;
+		}
+		printf("\n");
+		x++;
+	}
+}

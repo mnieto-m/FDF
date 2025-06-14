@@ -69,8 +69,5 @@ void	init_map_mlx(char *str, t_map *map)
 - comprobar si son del mismo tamaño las mismas lineas
 - numeros no pueden dar overflow aka no tenga flow sean toys
 - split por espacios por coma para color
-
-
 ((t_node *[lenrow])map)[][];
-
 */

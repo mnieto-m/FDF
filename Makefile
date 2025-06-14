@@ -19,17 +19,17 @@ INCLUDE_DIR = include/
 LIBMLX	= ./MLX42
 
 #Files
-FILES = fdf\
-		parse/check_argv\
-		parse/checkfile_fdf\
-		parse/read_map\
-		ft_atoi_base\
-		error/ft_error\
-		init_map\
-		hooks\
-		ft_print_img\
-		isometric\
-		matrix_oper \
+FILES = fdf \
+		init_map \
+		parse/check_argv \
+		parse/checkfile_fdf \
+		parse/read_map \
+		error/ft_error \
+		utils/ft_atoi_base \
+		mlx/hooks \
+		mlx/ft_print_img \
+		matrix/isometric \
+		matrix/matrix_oper \
 		structs/tmap.c \
 		structs/tnode.c
 
