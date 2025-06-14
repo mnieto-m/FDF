@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	map = NULL;
 	if (check_argv(argc, argv))
 		return (EXIT_FAILURE);
+	
 	init_map_mlx(argv[1], map);
 	// Calcular la proyeccion de los puntos
 	// init_proyection(map);

@@ -91,7 +91,7 @@ static void set_value(char *str, t_map *map)
 
 	aux = ft_split(str, ' ');
 	if (!aux)
-		fdf_error(NULL, map);
+		fdf_exit_error(NULL, map);
 	row = -1; // row
 	while (++row < map->row)
 	{

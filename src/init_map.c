@@ -62,6 +62,8 @@ void	init_map_mlx(char *str, t_map *map)
 	fdf_tmap_init(row, len_row, map);
 	if (read_map(str, map, fd) != TRUE)
 		fdf_exit_error(NULL, map);
+	//CHECK
+	fdf_tmap_print(map);
 }
 
 /*

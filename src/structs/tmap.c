@@ -14,6 +14,7 @@
 void	fdf_tmap_init(int row_count, int col_count, t_map *map)
 {
 	ft_memset(map, 0, sizeof(t_map));
+	// INIT MLX
 	map->mlx->h_center_pt = H_CENTER_DEFAULT;
 	map->mlx->w_center_pt = W_CENTER_DEFAULT;
 	map->mlx->mlx = mlx_init(WIDTH, HEIGHT, "FDF", 1);
