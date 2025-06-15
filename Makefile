@@ -19,17 +19,20 @@ INCLUDE_DIR = include/
 LIBMLX	= ./MLX42
 
 #Files
-FILES = fdf\
-		check_argv\
-		checkfile_fdf\
-		ft_atoi_base\
-		ft_error\
-		init_map\
-		read_map\
-		hooks\
-		ft_print_img\
-		isometric\
-		matrix_oper
+FILES = fdf \
+		init_map \
+		parse/check_argv \
+		parse/checkfile_fdf \
+		parse/read_map \
+		error/ft_error \
+		utils/ft_atoi_base \
+		mlx/hooks \
+		mlx/ft_print_img \
+		matrix/isometric \
+		matrix/matrix_oper \
+		structs/tmap \
+		structs/tnode
+
 
 # FILES_ADD
 LIBS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm

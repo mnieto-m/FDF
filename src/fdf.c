@@ -12,6 +12,11 @@
 
 #include "../include/fdf.h"
 
+/** 
+ * rows
+ * tab es un un array unidireccional
+ * 
+ */
 
 int	main(int argc, char **argv)
 {
@@ -25,7 +30,8 @@ int	main(int argc, char **argv)
 	// init_proyection(map);
 /* 	ft_print_img(map);
 	ft_hook(map); */
-	ft_free_screen(map);
+	
+	fdf_mlx_free(map);
 	return (0);
 }
 

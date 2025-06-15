@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-/* 
-static void ft_free_map(t_node *tab,t_map *map)
+
+/*
+static void	ft_free_map(t_node *tab,t_map *map)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-	
 	while(i < ((map)->len_row * (map)->row))
 	{
 		if(&tab[i])
@@ -25,31 +25,42 @@ static void ft_free_map(t_node *tab,t_map *map)
 	}
 	free(map);
 } */
-void fail_read(char *str, t_map *map)
+
+// NOTE: can be static
+void	fdf_print_error(char *str)
 {
-	if(map)
-		free(map); //FREE t_node y t_mlx antes
 	perror(str);
 	exit(EXIT_FAILURE);
 }
-void ft_error(t_map *map)
+
+// NOTE: delete
+// void	fail_read(char *str, t_map *map)
+// {
+// 	if (map)
+// 		free(map); // FREE t_node y t_mlx antes
+// 	perror(str);
+// 	exit(EXIT_FAILURE);
+// }
+
+void	fdf_exit_error(char *str, t_map *map)
 {
-	if(map)
-		free(map);//FREE t_node y t_mlx antes
+	if (map)
+		free(map); // FREE t_node y t_mlx antes
+	if (str)
+		fdf_print_error(str);
 	exit(EXIT_FAILURE);
 }
 
-int ft_free_screen(t_map *map)
+int	fdf_mlx_free(t_map *map)
 {
-	if(map)
+	if (map)
 	{
-		
-		if(map->mlx->img)
-			mlx_delete_image(map->mlx->mlx, map->mlx->img);
-		if(map->mlx->mlx)
-			mlx_terminate(map->mlx->mlx);
-/* 		if(map->tab)
-			ft_free_map(&(map->tab) ,&map); */
+		if (map->mlx.img)
+			mlx_delete_image(map->mlx.mlx, map->mlx.img);
+		if (map->mlx.mlx)
+			mlx_terminate(map->mlx.mlx);
+		/* 		if(map->tab)
+					ft_free_map(&(map->tab) ,&map); */
 	}
 	exit(EXIT_FAILURE);
 }

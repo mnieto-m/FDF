@@ -12,13 +12,14 @@
 
 #include "../include/fdf.h"
 
-static char	*ft_strjoin_free(char *s1, char *s2)
+// NOTE: maybe add this standalone as an util
+static char *ft_strjoin_free(char *s1, char *s2)
 {
-	size_t	l1;
-	size_t	l2;
-	int		i;
-	int		j;
-	char	*str;
+	size_t l1;
+	size_t l2;
+	int i;
+	int j;
+	char *str;
 
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
@@ -39,7 +40,6 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
-
 /*void	set_value(char *str, t_map *map)
 {
 	int		value_x;
@@ -48,7 +48,7 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	long 	color;
 	int		index;
 	char	**aux;
-	
+
 
 	value_x = 0;
 	value_z = 0;
@@ -80,77 +80,41 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 		value_x++;
 	}
 }*/
+
+// NOTE: refactor this function on the fdf_tnode_init
 static void set_value(char *str, t_map *map)
 {
-    int value_x = 0;
-    int value_y = 0;
-    int value_z = 0;
-    long color = 0;
-    int index = 0;
-    char **aux;
-    char **z_and_color;
+	int i;
+	int row;
+	int col;
+	char **aux;
 
-    aux = ft_split(str, ' '); // Dividir la entrada en elementos separados por espacio
-    if (!aux)
-        return; // Manejar errores en caso de que ft_split falle
-
-    // Usamos while para iterar sobre las filas y columnas
-    while (value_x < map->row)
-    {
-        // Comenzar con la primera columna
-        if (value_y < map->len_row)
-        {
-            index = value_x * map->len_row + value_y;
-
-            // Dividir cada valor en coordenada Z y color si es necesario
-            z_and_color = ft_split(aux[index], ','); // Accedemos al índice lineal
-            value_z = ft_atoi(z_and_color[0]); // Obtener la coordenada Z
-
-            if (z_and_color[1]) // Si hay un color explícito
-                color = ft_atoi_base(z_and_color[1], HEXADECIMAL);
-            else
-                color = ft_atoi_base("0xFFFFFF", HEXADECIMAL); // Color por defecto
-
-            // Liberar memoria del split intermedio
-            free(z_and_color);
-
-            // Asignar valores a la estructura
-            map->tab[index].xyz[0] = value_x;
-            map->tab[index].xyz[1] = value_y;
-            map->tab[index].xyz[2] = value_z;
-            map->tab[index].color = color;
-
-            value_y++; // Avanzar a la siguiente columna
-        }
-        else
-        {
-            // Si llegamos al final de la fila, pasar a la siguiente
-            value_y = 0;
-            value_x++;
-        }
-    }
-
-    // Liberar memoria de aux
-    int i = 0;
-    while (aux[i])
-    {
-        free(aux[i]);
-        i++;
-    }
-    free(aux);
+	aux = ft_split(str, ' ');
+	if (!aux)
+		fdf_exit_error(NULL, map);
+	row = -1; // row
+	while (++row < map->row)
+	{
+		col = -1; // col
+		if (++col < map->len_row)
+			fdf_tnode_init(row, col, aux, map);
+	}
+	i = -1;
+	while (aux[++i])
+		free(aux[i]);
+	free(aux);
 }
 
-
-int	read_map(char *str, t_map *map, int fd)
+int read_map(char *str, t_map *map, int fd)
 {
-	static char	*buffer;
-	char		*aux;
-	int			flag;
+	static char *buffer;
+	char *aux;
+	int flag;
 
 	flag = TRUE;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		fail_read(str, map);
+		fdf_exit_error(str, map);
 	aux = get_next_line(fd);
 	while (aux)
 	{
@@ -162,5 +126,3 @@ int	read_map(char *str, t_map *map, int fd)
 	buffer = NULL;
 	return (flag);
 }
-
-// repasar codigo no me acuerdo de nada :.....(
