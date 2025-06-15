@@ -41,6 +41,25 @@ static int	count_struct(int *row, int *len_row, int fd)
 	return (flag);
 }
 
+static void	fdf_build_view_pts(t_map *map)
+{
+	int	x;
+	int	y;
+	int	idx;
+
+	x = -1;
+	while (++x < map->row)
+	{
+		y = -1;
+		while (++y < map->len_row)
+		{
+			idx = (x * map->row) + y;
+			matrix_mult_pt(map->tab[idx].xyz, map->tab[idx].w_xyz,
+				map->view.matrix_rot);
+		}
+	}
+}
+
 void	init_map_mlx(char *str, t_map *map)
 {
 	int	fd;
@@ -59,8 +78,8 @@ void	init_map_mlx(char *str, t_map *map)
 	fdf_tmap_init(row, len_row, map);
 	if (read_map(str, map, fd) != TRUE)
 		fdf_exit_error(NULL, map);
-	//build view -> initial view:
-	//CHECK
+	fdf_build_view_pts(map);
+	// CHECK
 	fdf_tmap_print(map);
 }
 

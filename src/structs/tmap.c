@@ -33,6 +33,8 @@ void	fdf_tmap_init(int row_count, int col_count, t_map *map)
 	// }
 	map->mlx.h_center_pt = H_CENTER_DEFAULT;
 	map->mlx.w_center_pt = W_CENTER_DEFAULT;
+	// NOTE: add init of view here
+	fdf_tview_init(&map->view);
 }
 
 void	fdf_tmap_free(t_map *map)
@@ -60,4 +62,5 @@ void	fdf_tmap_print(t_map *map)
 	fdf_tnodes_print_xyz(map->row, map->len_row, map->tab);
 	printf("node array window\n");
 	fdf_tnodes_print_w_xy(map->row, map->len_row, map->tab);
+	fdf_tview_print(&map->view);
 }

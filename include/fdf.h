@@ -42,10 +42,17 @@ typedef struct s_mini_mlx
 
 }				t_mlx;
 
+typedef struct s_view
+{
+	double matrix_rot[9]; // on init it's an isometric
+							// int scale;
+							// int **translate;
+}				t_view;
+
 typedef struct s_node
 {
 	int			xyz[3];
-	int			w_xyz[2];
+	int			w_xyz[3];
 	long		color;
 }				t_node;
 
@@ -55,9 +62,9 @@ typedef struct s_map_mdata
 	int			len_row;
 	int max_value; // max_z
 	int min_value; // min_z
-
 	t_mlx		mlx;
 	t_node *tab; // array of nodes
+	t_view		view;
 }				t_map;
 
 // init map, read map
@@ -69,15 +76,16 @@ int				check_argv(int argc, char **argv);
 int				ft_atoi_base(char *str, char *base_from);
 void			ft_hook(void *param);
 void			init_proyection(t_map *map);
-double			*xy_projection(t_map *map, double xyz[3]);
-double			*matrix_mult_square(t_map *map, double *m1, double *m2,
-					double *rslt);
-double			*matrix_mult(t_map *map, double m[3][3], double pt[3]);
-double			*scale(t_map *map, int factor, double xyz[3]);
-double			*get_isometric(void);
-double			*matrix_init(void);
-void			matrix_free(double *m);
-double			*matrix_mult_isometric(t_map *map, double *trans);
+
+// double			*matrix_pr_xy(t_map *map, double xyz[3]);
+// double			*matrix_mult_square(t_map *map, double *m1, double *m2,
+// double *rslt);
+void			matrix_mult_pt(const int pt_o[3], int pt_rslt[3], double m[9]);
+// double			*scale(t_map *map, int factor, double xyz[3]);
+void			matrix_rot_isometric(t_view *view);
+// double			*matrix_init(void);
+// void			matrix_free(double *m);
+// double			*matrix_mult_isometric(t_map *map, double *trans);
 
 /* error ---------------------------------------------------- */
 void			fdf_exit_error(char *str, t_map *map);
@@ -91,6 +99,9 @@ void			fdf_tmap_print(t_map *map);
 void			fdf_tnodes_print_xyz(int rows, int cols, t_node *node);
 void			fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes);
 void			fdf_tnode_init(int row, int col, char **input, t_map *map);
+void			fdf_tview_init(t_view *vw);
+void			fdf_tview_print(t_view *view);
+
 #endif
 
 /* 3W test.c ./MLX42/build/libmlx42.a -IMLX42/include/MLX42 -ldl -lglfw
