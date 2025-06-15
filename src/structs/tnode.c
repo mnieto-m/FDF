@@ -72,3 +72,4 @@ void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 		map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx,
 				HEXADECIMAL);
 }
+
