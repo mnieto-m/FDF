@@ -51,14 +51,14 @@ void	fdf_exit_error(char *str, t_map *map)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_free_screen(t_map *map)
+int	fdf_mlx_free(t_map *map)
 {
 	if (map)
 	{
-		if (map->mlx->img)
-			mlx_delete_image(map->mlx->mlx, map->mlx->img);
-		if (map->mlx->mlx)
-			mlx_terminate(map->mlx->mlx);
+		if (map->mlx.img)
+			mlx_delete_image(map->mlx.mlx, map->mlx.img);
+		if (map->mlx.mlx)
+			mlx_terminate(map->mlx.mlx);
 		/* 		if(map->tab)
 					ft_free_map(&(map->tab) ,&map); */
 	}

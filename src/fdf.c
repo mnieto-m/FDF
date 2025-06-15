@@ -25,13 +25,13 @@ int	main(int argc, char **argv)
 	map = NULL;
 	if (check_argv(argc, argv))
 		return (EXIT_FAILURE);
-	
 	init_map_mlx(argv[1], map);
 	// Calcular la proyeccion de los puntos
 	// init_proyection(map);
 /* 	ft_print_img(map);
 	ft_hook(map); */
-	ft_free_screen(map);
+	
+	fdf_mlx_free(map);
 	return (0);
 }
 

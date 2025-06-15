@@ -33,11 +33,13 @@
 // struct mlx
 typedef struct s_mini_mlx
 {
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-	void		*img_addr;
 	double		h_center_pt;
 	double		w_center_pt;
+	mlx_t		*mlx;
+	void		*window;
+	mlx_image_t	*img;
+	void		*img_addr;
+
 }				t_mlx;
 
 typedef struct s_node
@@ -53,8 +55,9 @@ typedef struct s_map_mdata
 	int			len_row;
 	int			max_value;
 	int			min_value;
-	t_mlx		*mlx;
-	t_node		tab[];
+
+	t_mlx		mlx;
+	t_node		*tab; //array of nodes
 }				t_map;
 
 // init map, read map
@@ -65,7 +68,7 @@ int				checkfile_fdf(char *str);
 int				check_argv(int argc, char **argv);
 int				ft_atoi_base(char *str, char *base_from);
 void			ft_hook(void *param);
-int				ft_free_screen(t_map *map);
+int				fdf_mlx_free(t_map *map);
 void			init_proyection(t_map *map);
 double			*xy_projection(t_map *map, double xyz[3]);
 double			*matrix_mult_square(t_map *map, double *m1, double *m2,

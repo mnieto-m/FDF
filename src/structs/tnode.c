@@ -58,6 +58,7 @@ void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 	int	color_comma_idx;
 	int	z_flag;
 
+	z_flag = 0;
 	idx = (row * map->row) + col;
 	color_comma_idx = ft_strchr(inputs[idx], ',') - inputs[idx]; // avoid split
 	map->tab[idx].xyz[0] = row;
