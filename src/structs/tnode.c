@@ -11,9 +11,10 @@
 
 void	fdf_tnodes_print_xyz(int rows, int cols, t_node *nodes)
 {
-	int	x;
-	int	y;
-	int	idx;
+	int		x;
+	int		y;
+	int		idx;
+	t_node	pt;
 
 	x = 0;
 	while (x < rows)
@@ -22,8 +23,9 @@ void	fdf_tnodes_print_xyz(int rows, int cols, t_node *nodes)
 		while (y < cols)
 		{
 			idx = (x * rows) + y;
-			printf("\t(%i,%i,%i), %li", nodes[idx].xyz[0], nodes[idx].xyz[1],
-				nodes[idx].xyz[2], nodes[idx].color);
+			pt = nodes[idx];
+			printf("\t\t(%i,%i,%i), %li", pt.xyz[0], pt.xyz[1], pt.xyz[2],
+				pt.color);
 			y++;
 		}
 		printf("\n");
@@ -33,9 +35,10 @@ void	fdf_tnodes_print_xyz(int rows, int cols, t_node *nodes)
 
 void	fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes)
 {
-	int	x;
-	int	y;
-	int	idx;
+	int		x;
+	int		y;
+	int		idx;
+	t_node	pt;
 
 	x = 0;
 	while (x < rows)
@@ -44,7 +47,8 @@ void	fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes)
 		while (y < cols)
 		{
 			idx = (x * rows) + y;
-			printf("\t(%i,%i)", nodes[idx].w_xyz[0], nodes[idx].w_xyz[1]);
+			pt = nodes[idx];
+			printf("\t\t(%i,%i,%i)", pt.w_xyz[0], pt.w_xyz[1], pt.w_xyz[2]);
 			y++;
 		}
 		printf("\n");
@@ -54,9 +58,9 @@ void	fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes)
 
 void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 {
-	int	idx;
-	int	color_comma_idx;
-	int	z_flag;
+	int			idx;
+	long long	color_comma_idx;
+	int			z_flag;
 
 	z_flag = 0;
 	idx = (row * map->row) + col;
