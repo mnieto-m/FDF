@@ -37,8 +37,11 @@ void	fdf_tmap_init(int row_count, int col_count, t_map *map)
 
 void	fdf_tmap_free(t_map *map)
 {
-	if (map->mlx.mlx)
-		fdf_mlx_free(map);
+	if (!map)
+		return ;
+	// printf("mlx ptr: %p\n", (void *)map->mlx.mlx);
+	// if (map->mlx.mlx)
+	// 	fdf_tmlx_free(&map->mlx);
 	if (map->tab)
 		free(map->tab);
 	free(map);

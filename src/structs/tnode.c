@@ -54,9 +54,9 @@ void	fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes)
 
 void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 {
-	int	idx;
-	int	color_comma_idx;
-	int	z_flag;
+	int			idx;
+	long long	color_comma_idx;
+	int			z_flag;
 
 	z_flag = 0;
 	idx = (row * map->row) + col;
@@ -72,4 +72,3 @@ void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 		map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx,
 				HEXADECIMAL);
 }
-

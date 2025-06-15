@@ -51,18 +51,15 @@ void	init_map_mlx(char *str, t_map *map)
 	len_row = 0;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-	
 		fdf_exit_error(NULL, map); // map en null
 	// NOTE: len_row is col
 	// NOTE: int *row can be directly &(map->row) (the same for col)
 	if (count_struct(&row, &len_row, fd) != TRUE)
 		fdf_exit_error(NULL, map); // map es null
-	map = ft_calloc(1, sizeof(t_map));
-	if (!map)
-		fdf_exit_error(NULL, map); // map es null
 	fdf_tmap_init(row, len_row, map);
 	if (read_map(str, map, fd) != TRUE)
 		fdf_exit_error(NULL, map);
+	//build view -> initial view:
 	//CHECK
 	fdf_tmap_print(map);
 }

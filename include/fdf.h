@@ -53,11 +53,11 @@ typedef struct s_map_mdata
 {
 	int			row;
 	int			len_row;
-	int			max_value;
-	int			min_value;
+	int max_value; // max_z
+	int min_value; // min_z
 
 	t_mlx		mlx;
-	t_node		*tab; //array of nodes
+	t_node *tab; // array of nodes
 }				t_map;
 
 // init map, read map
@@ -68,7 +68,6 @@ int				checkfile_fdf(char *str);
 int				check_argv(int argc, char **argv);
 int				ft_atoi_base(char *str, char *base_from);
 void			ft_hook(void *param);
-int				fdf_mlx_free(t_map *map);
 void			init_proyection(t_map *map);
 double			*xy_projection(t_map *map, double xyz[3]);
 double			*matrix_mult_square(t_map *map, double *m1, double *m2,
@@ -82,6 +81,7 @@ double			*matrix_mult_isometric(t_map *map, double *trans);
 
 /* error ---------------------------------------------------- */
 void			fdf_exit_error(char *str, t_map *map);
+void			fdf_tmlx_free(t_mlx *mlx);
 // void			fail_read(char *str, t_map *map);
 
 /* struct utils --------------------------------------------- */
