@@ -63,12 +63,12 @@ typedef struct s_map_mdata
 	int max_value; // max_z
 	int min_value; // min_z
 	t_mlx		mlx;
-	t_node *tab; // array of nodes
-	t_view		view;
+	// t_view		view;
+	t_node tab[]; // array of nodes
 }				t_map;
 
 // init map, read map
-void			init_map_mlx(char *str, t_map *map);
+void			init_map_mlx(char *str, t_map **map);
 int				read_map(char *str, t_map *map, int fd);
 
 int				checkfile_fdf(char *str);
@@ -94,7 +94,7 @@ void			fdf_tmlx_free(t_mlx *mlx);
 
 /* struct utils --------------------------------------------- */
 void			fdf_tmap_init(int row_count, int col_count, t_map *map);
-void			fdf_tmap_free(t_map *map);
+void			fdf_tmap_free(t_map **map);
 void			fdf_tmap_print(t_map *map);
 void			fdf_tnodes_print_xyz(int rows, int cols, t_node *node);
 void			fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes);
