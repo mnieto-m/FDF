@@ -13,13 +13,13 @@
 #include "../include/fdf.h"
 
 // NOTE: maybe add this standalone as an util
-static char *ft_strjoin_free(char *s1, char *s2)
+static char	*ft_strjoin_free(char *s1, char *s2)
 {
-	size_t l1;
-	size_t l2;
-	int i;
-	int j;
-	char *str;
+	size_t	l1;
+	size_t	l2;
+	int		i;
+	int		j;
+	char	*str;
 
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
@@ -45,10 +45,10 @@ static char *ft_strjoin_free(char *s1, char *s2)
 	int		value_x;
 	int		value_y;
 	int		value_z;
-	long 	color;
+	long	color;
 	int		index;
 	char	**aux;
-
+	int		i;
 
 	value_x = 0;
 	value_z = 0;
@@ -80,24 +80,41 @@ static char *ft_strjoin_free(char *s1, char *s2)
 		value_x++;
 	}
 }*/
-
-// NOTE: refactor this function on the fdf_tnode_init
-static void set_value(char *str, t_map *map)
+// TODO: this can be added to Libft as is a general function
+static char	*ft_replace_char(char find, char replace, char *str)
 {
 	int i;
-	int row;
-	int col;
-	char **aux;
 
-	aux = ft_split(str, ' ');
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == find)
+		{
+			str[i] = replace;
+		}
+	}
+	return (str);
+}
+
+// NOTE: refactor this function on the fdf_tnode_init
+static void	set_value(char *str, t_map *map)
+{
+	int		i;
+	int		row;
+	int		col;
+	char	**aux;
+
+	aux = ft_split(ft_replace_char('\n', ' ', str), ' ');
 	if (!aux)
 		fdf_exit_error(NULL, map);
 	row = -1; // row
 	while (++row < map->row)
 	{
 		col = -1; // col
-		if (++col < map->len_row)
+		while (++col < map->len_row)
+		{
 			fdf_tnode_init(row, col, aux, map);
+		}
 	}
 	i = -1;
 	while (aux[++i])
@@ -105,11 +122,11 @@ static void set_value(char *str, t_map *map)
 	free(aux);
 }
 
-int read_map(char *str, t_map *map, int fd)
+int	read_map(char *str, t_map *map, int fd)
 {
-	static char *buffer;
-	char *aux;
-	int flag;
+	static char	*buffer;
+	char		*aux;
+	int			flag;
 
 	flag = TRUE;
 	fd = open(str, O_RDONLY);

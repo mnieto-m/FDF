@@ -29,9 +29,11 @@ FILES = fdf \
 		mlx/hooks \
 		mlx/ft_print_img \
 		matrix/isometric \
-		matrix/matrix_oper \
+		matrix/matrix_op \
+		matrix/matrix_projection \
 		structs/tmap \
-		structs/tnode
+		structs/tnode \
+		structs/tview
 
 
 # FILES_ADD

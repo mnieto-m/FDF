@@ -25,7 +25,6 @@ static void	ft_free_map(t_node *tab,t_map *map)
 	}
 	free(map);
 } */
-
 // NOTE: can be static
 void	fdf_print_error(char *str)
 {
@@ -51,16 +50,10 @@ void	fdf_exit_error(char *str, t_map *map)
 	exit(EXIT_FAILURE);
 }
 
-int	fdf_mlx_free(t_map *map)
+void	fdf_tmlx_free(t_mlx *mlx)
 {
-	if (map)
-	{
-		if (map->mlx.img)
-			mlx_delete_image(map->mlx.mlx, map->mlx.img);
-		if (map->mlx.mlx)
-			mlx_terminate(map->mlx.mlx);
-		/* 		if(map->tab)
-					ft_free_map(&(map->tab) ,&map); */
-	}
-	exit(EXIT_FAILURE);
+	if (mlx->img)
+		mlx_delete_image(mlx->mlx, mlx->img);
+	if (mlx->mlx)
+		mlx_terminate(mlx->mlx);
 }
