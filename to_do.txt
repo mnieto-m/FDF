@@ -1,0 +1,8 @@
++ atoibase funciona: no?? no se devuelve 0 los colores // posiscion de memoria retrasaada por una arreglado acepta colores de 0x y 0X
++ si no existe archivo da segfault, problemas en mapas invalidos
+Lucia hace muy bien la cosas !!! si
++ hacer bucle de renderizado (mlx loop)
+dentro del loop:
++ put pixel -> conseguir dibujar los puntos en la pantalla (los que tenemos), haciendo una proyeccion (de las 3 coordenadas nos quedamos con 2)
++ bresenham -> dibujo lineas entre pixeles
++ hooks para teclas

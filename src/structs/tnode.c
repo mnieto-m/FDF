@@ -71,8 +71,11 @@ void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 	if (z_flag == -1)
 		fdf_exit_error(NULL, map);
 	if (color_comma_idx <= 0) // no color
-		map->tab[idx].color = ft_atoi_base("0xFFFFFF", HEXADECIMAL);
+		map->tab[idx].color = ft_atoi_base("0XFFFFFF", HEXADECIMAL);
+	else if(ft_strncmp( inputs[idx]+ color_comma_idx + 1,"0X",2) == 0)
+		map->tab[idx].color = ft_atoi_base(inputs[idx]+ color_comma_idx + 1,
+			HEXADECIMAL);
 	else
-		map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx,
-				HEXADECIMAL);
+		map->tab[idx].color = ft_atoi_base(inputs[idx]+ color_comma_idx + 1,
+			hexadecimal);
 }

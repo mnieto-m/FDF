@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/27 19:48:06 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:59:18 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define TRUE 0
 # define FALSE 1
 # define HEXADECIMAL "0123456789ABCDEF"
+# define hexadecimal "0123456789abcdef"
 # define W_CENTER_DEFAULT 960.0
 # define H_CENTER_DEFAULT 540.0
 
@@ -63,7 +64,7 @@ typedef struct s_map_mdata
 	int max_value; // max_z
 	int min_value; // min_z
 	t_mlx		mlx;
-	// t_view		view;
+	t_view		view;
 	t_node tab[]; // array of nodes
 }				t_map;
 
@@ -73,7 +74,7 @@ int				read_map(char *str, t_map *map, int fd);
 
 int				checkfile_fdf(char *str);
 int				check_argv(int argc, char **argv);
-int				ft_atoi_base(char *str, char *base_from);
+long				ft_atoi_base(char *str, char *base_from);
 void			ft_hook(void *param);
 void			init_proyection(t_map *map);
 

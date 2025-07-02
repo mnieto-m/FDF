@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:52:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 21:12:44 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/02 22:03:00 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,22 @@ static int		ft_get_val(char c, char *base)
 	return (-1);
 }
 
-int	ft_atoi_base(char *str, char *base_from)
+long	ft_atoi_base(char *str, char *base_from)
 {
 	int i;
-	int nb;
+	long nb;
 	int power;
 	int	base_len;
-
+	int hex_base;
+	
+	hex_base  = 0;
 	nb = 0;
 	power = 1;
 	base_len = ft_strlen(base_from);
+	if (ft_strncmp(str, "0X", 2) == 0 || ft_strncmp(str, "0x", 2) == 0)
+		hex_base = 2;
 	i = ft_strlen(str) - 1;
-	while (i >= 0)
+	while (i >= hex_base)
 	{
 		if (ft_get_val(str[i], base_from) < 0)
 			return (0);
