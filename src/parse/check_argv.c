@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:12:04 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 20:56:56 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:00:59 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ int	check_argv(int argc, char **argv)
 	}
 	else if (argc != 2)
 	{
-		ft_putstr_fd(strerror(EINVAL), 1);
-		if (argc > 2)
-			ft_putstr_fd(": Too many arguments", 1);
-		else if (argc < 2)
-			ft_putstr_fd(": To less arguments", 1);
+		if (argc < 2)
+		{
+			ft_putstr_fd(strerror(EINVAL), 1);
+			ft_putstr_fd(": Too less arguments", 1);
+		}
+		else
+			ft_putstr_fd("Too many arguments", 1);
 		ft_putstr_fd("\nCorrect imput: ./fdf <file.fdf>", 1);
+		ft_putstr_fd("\n", 1);
 	}
 	return (EXIT_FAILURE);
 }

@@ -26,6 +26,8 @@ int	checkfile_fdf(char *str)
 	if (aux == &str[(i - 4)])
 		return (EXIT_SUCCESS);
 	ft_putstr_fd(strerror(EINVAL), 1);
-	ft_putstr_fd("\nCorrect imput: ./fdf <file.fdf>", 1);
+	ft_putstr_fd(" ", 1);
+	ft_putstr_fd(str, 1);
+	ft_putstr_fd("\nCorrect imput: ./fdf <file.fdf>\n", 1);
 	return (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/27 19:45:48 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:17:45 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,8 @@ int	read_map(char *str, t_map *map, int fd)
 
 	flag = TRUE;
 	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		fdf_exit_error(str, map);
+	if (fd < 1)
+		fdf_exit_error(NULL,map);
 	aux = get_next_line(fd);
 	while (aux)
 	{

@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/01 18:00:05 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:16:13 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void 	init_map_mlx(char *str, t_map **map)
 	row = 0;
 	len_row = 0;
 	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		fdf_exit_error(NULL, *map); // map en null
+	if (fd < 1)
+		fdf_print_error(str); // map en null
 	// NOTE: len_row is col
 	// NOTE: int *row can be directly &(map->row) (the same for col)
 	if (count_struct(&row, &len_row, fd) != TRUE)

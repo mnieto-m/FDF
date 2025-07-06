@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/27 19:51:15 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:18:13 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	fdf_print_error(char *str)
 
 void	fdf_exit_error(char *str, t_map *map)
 {
-	if (map)
+	if (map || map != NULL)
 		free(map); // FREE t_node y t_mlx antes
 	if (str)
 		fdf_print_error(str);

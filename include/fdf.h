@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/02 21:59:18 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:55:36 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../Libft/include/libft.h"
 # include "MLX42/MLX42.h"
 # include <math.h>
+# include <errno.h>
+
 
 // agregar makefile carol
 
@@ -90,6 +92,7 @@ void			matrix_rot_isometric(t_view *view);
 
 /* error ---------------------------------------------------- */
 void			fdf_exit_error(char *str, t_map *map);
+void	fdf_print_error(char *str);
 void			fdf_tmlx_free(t_mlx *mlx);
 // void			fail_read(char *str, t_map *map);
 
