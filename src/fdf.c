@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:49:11 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/01 17:53:40 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:31:39 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	main(int argc, char **argv)
 	init_map_mlx(argv[1], &map);
 	// Calcular la proyeccion de los puntos
 	// init_proyection(map);
-	/* 	ft_print_img(map);
-	ft_hook(map); */
+	ft_hook(map);
 	fdf_tmap_free(&map);
 	return (0);
 }

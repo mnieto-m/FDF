@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/06 19:18:13 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:45:35 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	fdf_print_error(char *str)
 
 void	fdf_exit_error(char *str, t_map *map)
 {
+	if(map->mlx != NULL)
+		fdf_tmlx_free(map);
 	if (map || map != NULL)
 		free(map); // FREE t_node y t_mlx antes
 	if (str)
@@ -50,10 +52,12 @@ void	fdf_exit_error(char *str, t_map *map)
 	exit(EXIT_FAILURE);
 }
 
-void	fdf_tmlx_free(t_mlx *mlx)
+void	fdf_tmlx_free(t_map *map)
 {
-	if (mlx->img)
-		mlx_delete_image(mlx->mlx, mlx->img);
-	if (mlx->mlx)
-		mlx_terminate(mlx->mlx);
+	
+	if (map->img)
+		mlx_delete_image(map->mlx, map->img);
+	if (map->mlx)
+		mlx_terminate(map->mlx);
+		mlx_put_pixel;
 }

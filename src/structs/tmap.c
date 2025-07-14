@@ -10,15 +10,33 @@
 		t_node		tab[];
 	}
  */
+void fdf_mlx_init(t_map *map)
+{
 
+	map->h_center_pt = H_CENTER_DEFAULT;
+	map->w_center_pt = W_CENTER_DEFAULT;
+	map->mlx = mlx_init(WIDTH,HEIGHT,"FDF", 1) ;
+	if(!map->mlx)
+	{
+		ft_putstr_fd((char* )mlx_strerror(mlx_errno),1);
+		fdf_tmlx_free(map);
+	}
+	map->img = (mlx_new_image(map->mlx, WIDTH, HEIGHT));
+	if(!map->img)
+	{
+		ft_putstr_fd((char* )mlx_strerror(mlx_errno),1);
+		fdf_tmlx_free(map);
+	}
+	mlx_set_setting(MLX_MAXIMIZED, true);
+}
 void	fdf_tmap_init(int row_count, int col_count, t_map *map)
 {
 	// ft_memset(map, 0, sizeof(t_map)); // changed malloc for calloc on allocation
 	// map->tab = ft_calloc(1, sizeof(t_node) * row_count * col_count);
 	// if (!map->tab)
 	// 	fdf_exit_error(NULL, map);
-	map->row = row_count;
-	map->len_row = col_count;
+	(map)->row = row_count;
+	(map)->len_row = col_count;
 	// map->mlx.mlx = mlx_init(WIDTH, HEIGHT, "FDF", 1);
 	// if (!map->mlx.mlx)
 	// {
@@ -31,8 +49,6 @@ void	fdf_tmap_init(int row_count, int col_count, t_map *map)
 	// 	perror("Error on mlx_mew_image");
 	// 	fdf_exit_error(NULL, map);
 	// }
-	map->mlx.h_center_pt = H_CENTER_DEFAULT;
-	map->mlx.w_center_pt = W_CENTER_DEFAULT;
 	// NOTE: add init of view here
 	fdf_tview_init(&map->view);
 }

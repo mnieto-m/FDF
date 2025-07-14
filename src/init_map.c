@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/06 19:16:13 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:19:34 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static int	count_struct(int *row, int *len_row, int fd)
 
 	flag = TRUE;
 	buffer = get_next_line(fd);
+	if(buffer == NULL)
+		return(flag = FALSE);
 	while (buffer)
 	{
 		if (*row == 0)
@@ -75,13 +77,14 @@ void 	init_map_mlx(char *str, t_map **map)
 	// NOTE: len_row is col
 	// NOTE: int *row can be directly &(map->row) (the same for col)
 	if (count_struct(&row, &len_row, fd) != TRUE)
-		fdf_exit_error(NULL, *map); // map es null
+		fdf_exit_error(NULL, NULL); // map es null
 	*map = ft_calloc(1, sizeof(t_map) + sizeof(t_node) * row * len_row);
 	if (!*map)
 		return ;
 	fdf_tmap_init(row, len_row, *map);
 	if (read_map(str, *map, fd) != TRUE)
 		fdf_exit_error(NULL, *map);
+	fdf_mlx_init((*map));
 	fdf_build_view_pts(*map);
 	// CHECK
 	fdf_tmap_print(*map);

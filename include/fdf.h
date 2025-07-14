@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/06 18:55:36 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:34:21 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,6 @@
 # define H_CENTER_DEFAULT 540.0
 
 // struct mlx
-typedef struct s_mini_mlx
-{
-	double		h_center_pt;
-	double		w_center_pt;
-	mlx_t		*mlx;
-	void		*window;
-	mlx_image_t	*img;
-	void		*img_addr;
-
-}				t_mlx;
 
 typedef struct s_view
 {
@@ -65,7 +55,13 @@ typedef struct s_map_mdata
 	int			len_row;
 	int max_value; // max_z
 	int min_value; // min_z
-	t_mlx		mlx;
+	double		h_center_pt;
+	double		w_center_pt;
+	void		*window;
+	void		*img_addr;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+
 	t_view		view;
 	t_node tab[]; // array of nodes
 }				t_map;
@@ -77,7 +73,7 @@ int				read_map(char *str, t_map *map, int fd);
 int				checkfile_fdf(char *str);
 int				check_argv(int argc, char **argv);
 long				ft_atoi_base(char *str, char *base_from);
-void			ft_hook(void *param);
+void			ft_hook(t_map *map);
 void			init_proyection(t_map *map);
 
 // double			*matrix_pr_xy(t_map *map, double xyz[3]);
@@ -93,7 +89,7 @@ void			matrix_rot_isometric(t_view *view);
 /* error ---------------------------------------------------- */
 void			fdf_exit_error(char *str, t_map *map);
 void	fdf_print_error(char *str);
-void			fdf_tmlx_free(t_mlx *mlx);
+void			fdf_tmlx_free(t_map *map);
 // void			fail_read(char *str, t_map *map);
 
 /* struct utils --------------------------------------------- */
@@ -106,6 +102,8 @@ void			fdf_tnode_init(int row, int col, char **input, t_map *map);
 void			fdf_tview_init(t_view *vw);
 void			fdf_tview_print(t_view *view);
 
+
+void fdf_mlx_init(t_map *map);
 #endif
 
 /* 3W test.c ./MLX42/build/libmlx42.a -IMLX42/include/MLX42 -ldl -lglfw
