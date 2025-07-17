@@ -33,7 +33,9 @@ FILES = fdf \
 		matrix/matrix_projection \
 		structs/tmap \
 		structs/tnode \
-		structs/tview
+		structs/tview \
+		draw_map\
+		bresenham
 
 
 # FILES_ADD

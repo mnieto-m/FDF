@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/10 15:45:35 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:00:08 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,4 @@ void	fdf_tmlx_free(t_map *map)
 		mlx_delete_image(map->mlx, map->img);
 	if (map->mlx)
 		mlx_terminate(map->mlx);
-		mlx_put_pixel;
 }

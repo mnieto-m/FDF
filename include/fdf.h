@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/10 13:34:21 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/17 21:31:41 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ typedef struct s_node
 	int			w_xyz[3];
 	long		color;
 }				t_node;
+typedef struct s_temp
+{
+	int x;
+	int y;
+}			t_temp;
 
 typedef struct s_map_mdata
 {
@@ -102,8 +107,9 @@ void			fdf_tnode_init(int row, int col, char **input, t_map *map);
 void			fdf_tview_init(t_view *vw);
 void			fdf_tview_print(t_view *view);
 
-
+void ft_bresenham(t_map *map, t_node p0, t_node p1 );
 void fdf_mlx_init(t_map *map);
+void draw_map(t_map *map);
 #endif
 
 /* 3W test.c ./MLX42/build/libmlx42.a -IMLX42/include/MLX42 -ldl -lglfw
