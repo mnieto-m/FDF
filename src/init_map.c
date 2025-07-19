@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/09 15:19:34 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/19 22:07:20 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,37 @@ static void	fdf_build_view_pts(t_map *map)
 		y = -1;
 		while (++y < map->len_row)
 		{
-			idx = (x * map->row) + y;
+			idx = (x * map->len_row) + y;
 			matrix_mult_pt(map->tab[idx].xyz, map->tab[idx].w_xyz,
 				map->view.matrix_rot);
+		}
+	}
+}
+void mult_init_scale(t_node *node, int scale)
+{
+	int i;
+
+	i = -1;
+	while(++i < 3)
+	{
+		node->w_xyz[i] *= scale;
+	}
+	
+}
+void fdf_escale_view_pts(t_map *map)
+{
+	int x;
+	int y;
+	int idx;
+	
+	x = -1;
+	while(++x < map->row)
+	{
+		y = -1;
+		while(++y < map->len_row)
+		{
+			idx = (x * map->len_row) + y;
+			mult_init_scale(&map->tab[idx],INIT_SCALE);
 		}
 	}
 }
@@ -84,8 +112,9 @@ void 	init_map_mlx(char *str, t_map **map)
 	fdf_tmap_init(row, len_row, *map);
 	if (read_map(str, *map, fd) != TRUE)
 		fdf_exit_error(NULL, *map);
-	fdf_mlx_init((*map));
 	fdf_build_view_pts(*map);
+	fdf_escale_view_pts(*map);
+	fdf_mlx_init((*map));
 	// CHECK
 	fdf_tmap_print(*map);
 }

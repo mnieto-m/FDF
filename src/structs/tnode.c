@@ -22,7 +22,7 @@ void	fdf_tnodes_print_xyz(int rows, int cols, t_node *nodes)
 		y = 0;
 		while (y < cols)
 		{
-			idx = (x * rows) + y;
+			idx = (x * cols) + y;
 			pt = nodes[idx];
 			printf("\t\t(%i,%i,%i), %li", pt.xyz[0], pt.xyz[1], pt.xyz[2],
 				pt.color);
@@ -63,7 +63,7 @@ void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 	int			z_flag;
 
 	z_flag = 0;
-	idx = (row * map->row) + col;
+	idx = (row * map->len_row) + col;
 	color_comma_idx = ft_strchr(inputs[idx], ',') - inputs[idx]; // avoid split
 	map->tab[idx].xyz[0] = row;
 	map->tab[idx].xyz[1] = col;

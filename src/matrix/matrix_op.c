@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_oper.c                                      :+:      :+:    :+:   */
+/*   matrix_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:24:40 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/05/26 21:35:36 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:35:27 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,38 +30,12 @@ void	matrix_mult_pt(const int pt_o[3], int pt_rslt[3], double m[9])
 	}
 }
 
-// double	*matrix_mult(t_map *map, double m[3][3], double pt[3])
-// {
-// 	int		i;
-// 	int		j;
-// 	double	*rslt;
-
-// 	rslt = ft_calloc(1, 3 * sizeof(double));
-// 	if (!rslt)
-// 		return (NULL);
-// 	i = -1;
-// 	while (++i < map->row)
-// 	{
-// 		j = -1;
-// 		while (++j < map->len_row)
-// 		{
-// 			rslt[i] += m[i][j] * pt[j];
-// 		}
-// 	}
-// 	return (rslt);
-// }
-
-// esto esta mal ??!!!!!
 double	*matrix_mult_square(t_map *map, double *m1, double *m2, double *rslt)
 {
 	int	i;
 	int	j;
 	int	k;
 
-	// double	rslt[3][3];
-	// rslt = ft_calloc(1, 3 * 3 * sizeof(double));
-	// if (!rslt)
-	// 	return (NULL);
 	i = -1;
 	while (++i < map->row)
 	{

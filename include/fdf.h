@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/17 21:31:41 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/19 21:04:25 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 # include <errno.h>
 
 
-// agregar makefile carol
 
 # define WIDTH 1080
 # define HEIGHT 1920
-# define INIT_SCALE 12
+# define INIT_SCALE 100
 
 // TODO: poner los booleans bien
 # define TRUE 0
