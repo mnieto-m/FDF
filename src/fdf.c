@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:49:11 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 19:11:21 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/21 20:08:14 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,19 @@ int	main(int argc, char **argv)
 	init_map_mlx(argv[1], &map);
 	draw_map(map);
 	print_nodes(map);
-	mlx_loop(map->mlx);
 	ft_hook(map);
 	fdf_tmap_free(map);
 	return (0);
 }
+
+/**
+*TODO:
+*	-entender y acabar trasalcion : es la suma diferencia del punto y la mitad 
+*	-Mapas no validos que si son validos numeros negativos y espacios al final de fila y columnas con un salto de linea
+*	- Hooks
+*	- funcion de colors
+*	-
+*/
 /**
  * GENERICS:
  *  - para cada struct
