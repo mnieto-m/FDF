@@ -78,4 +78,4 @@ fclean: clean
 # Recompilar todo
 re: fclean all 
 
-.PHONY: all, clean, fclean, libmlx
+.PHONY: all clean fclean libmlx

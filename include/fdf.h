@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/19 21:04:25 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:13:34 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 
 
-# define WIDTH 1080
-# define HEIGHT 1920
-# define INIT_SCALE 100
+# define WIDTH 1920
+# define HEIGHT 1080
+# define INIT_SCALE 15
 
 // TODO: poner los booleans bien
 # define TRUE 0
@@ -63,9 +63,9 @@ typedef struct s_map_mdata
 	double		w_center_pt;
 	void		*window;
 	void		*img_addr;
+	
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-
 	t_view		view;
 	t_node tab[]; // array of nodes
 }				t_map;
