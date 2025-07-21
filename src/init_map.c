@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/19 22:07:20 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:33:55 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void 	init_map_mlx(char *str, t_map **map)
 	fdf_escale_view_pts(*map);
 	fdf_mlx_init((*map));
 	// CHECK
-	fdf_tmap_print(*map);
+	//fdf_tmap_print(*map);
 }
 
 /*

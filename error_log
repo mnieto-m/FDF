@@ -1,0 +1,294 @@
+==64503== Memcheck, a memory error detector
+==64503== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==64503== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==64503== Command: ./fdf Test/pyramid.fdf
+==64503== Parent PID: 53744
+==64503== 
+==64503== Conditional jump or move depends on uninitialised value(s)
+==64503==    at 0x126349DC: ??? (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12635713: ??? (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x125F790F: ??? (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x125FC8B5: ??? (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x125F8AD0: DXCoreCreateAdapterFactory (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x603735B: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x60378D6: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x5474C2A: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x5B7D0EC: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x5B7D01F: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x549A5E9: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x54A410B: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503== 
+==64503== Conditional jump or move depends on uninitialised value(s)
+==64503==    at 0x12635272: ??? (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12635713: ??? (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x125F790F: ??? (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x125FC8B5: ??? (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x125F8AD0: DXCoreCreateAdapterFactory (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x603735B: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x60378D6: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x5474C2A: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x5B7D0EC: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x5B7D01F: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x549A5E9: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503==    by 0x54A410B: ??? (in /usr/lib/x86_64-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so)
+==64503== 
+==64503== Syscall param ioctl(generic) points to uninitialised byte(s)
+==64503==    at 0x49ECDED: ioctl (ioctl.c:36)
+==64503==    by 0x1266D712: D3DKMTQueryAdapterInfo (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12AAB3FA: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12E01452: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12umd64.so)
+==64503==    by 0x12E010D0: OpenAdapter12 (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12umd64.so)
+==64503==    by 0x12ABE780: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AAA6A7: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129D9B2B: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129D987F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129DA488: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129DBE3F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12994962: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x1ffeff7964 is on thread 1's stack
+==64503==  in frame #1, created by D3DKMTQueryAdapterInfo (???:)
+==64503== 
+==64503== Syscall param ioctl(generic) points to uninitialised byte(s)
+==64503==    at 0x49ECDED: ioctl (ioctl.c:36)
+==64503==    by 0x1266D712: D3DKMTQueryAdapterInfo (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12AAB3FA: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12E0148B: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12umd64.so)
+==64503==    by 0x12E01107: OpenAdapter12 (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12umd64.so)
+==64503==    by 0x12ABE780: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AAA6A7: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129D9B2B: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129D987F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129DA488: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129DBE3F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12994962: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x1ffeff7964 is on thread 1's stack
+==64503==  in frame #1, created by D3DKMTQueryAdapterInfo (???:)
+==64503== 
+==64503== Syscall param ioctl(generic) points to uninitialised byte(s)
+==64503==    at 0x49ECDED: ioctl (ioctl.c:36)
+==64503==    by 0x1266C3CF: D3DKMTLock2 (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12AB4C74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1328DCC4: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13288DAA: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x1328702C: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==  Address 0x1ffeffd6cc is on thread 1's stack
+==64503== 
+==64503== Invalid write of size 8
+==64503==    at 0x13288DF6: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x1328702C: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575E17: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575C86: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x125751C5: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x129D90AE: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x745351fad000 is not stack'd, malloc'd or (recently) free'd
+==64503== 
+==64503== Invalid write of size 8
+==64503==    at 0x13288E06: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x1328702C: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575E17: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575C86: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x125751C5: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x129D90AE: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x745351fad040 is not stack'd, malloc'd or (recently) free'd
+==64503== 
+==64503== Syscall param ioctl(generic) points to uninitialised byte(s)
+==64503==    at 0x49ECDED: ioctl (ioctl.c:36)
+==64503==    by 0x1266C3CF: D3DKMTLock2 (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12AB4C74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1328F29E: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13288EA0: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13287059: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==  Address 0x1ffeffd6ec is on thread 1's stack
+==64503== 
+==64503== Syscall param ioctl(generic) points to uninitialised byte(s)
+==64503==    at 0x49ECDED: ioctl (ioctl.c:36)
+==64503==    by 0x1266C3CF: D3DKMTLock2 (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12AB4C74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x13290E66: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132915FA: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13289159: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13287070: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x1ffeffd68c is on thread 1's stack
+==64503== 
+==64503== Invalid write of size 4
+==64503==    at 0x132891A1: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13287070: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575E17: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575C86: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x125751C5: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x129D90AE: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x745351fa8000 is not stack'd, malloc'd or (recently) free'd
+==64503== 
+==64503== Invalid write of size 4
+==64503==    at 0x132891A5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13287070: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575E17: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575C86: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x125751C5: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x129D90AE: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x745351fa8004 is not stack'd, malloc'd or (recently) free'd
+==64503== 
+==64503== Invalid write of size 4
+==64503==    at 0x132891C2: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13287070: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575E17: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575C86: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x125751C5: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x129D90AE: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x745351fa8008 is not stack'd, malloc'd or (recently) free'd
+==64503== 
+==64503== Invalid write of size 4
+==64503==    at 0x132891C7: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13287070: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575E17: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575C86: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x125751C5: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x129D90AE: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x745351fa800c is not stack'd, malloc'd or (recently) free'd
+==64503== 
+==64503== Syscall param ioctl(generic) points to uninitialised byte(s)
+==64503==    at 0x49ECDED: ioctl (ioctl.c:36)
+==64503==    by 0x1266C3CF: D3DKMTLock2 (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12AB4C74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x13294AB0: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13292F77: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132893DE: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132871EC: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x13286693: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132427C5: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x12AAE90F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AECA74: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x1ffeffd6ac is on thread 1's stack
+==64503== 
+==64503== Syscall param ioctl(generic) points to uninitialised byte(s)
+==64503==    at 0x49ECDED: ioctl (ioctl.c:36)
+==64503==    by 0x1266D712: D3DKMTQueryAdapterInfo (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12B0A1D4: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12CB5862: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AEE064: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575E17: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575C86: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x125751C5: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x129D90AE: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129DB633: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x1ffeffcb04 is on thread 1's stack
+==64503==  in frame #1, created by D3DKMTQueryAdapterInfo (???:)
+==64503== 
+==64503== Syscall param ioctl(generic) points to uninitialised byte(s)
+==64503==    at 0x49ECDED: ioctl (ioctl.c:36)
+==64503==    by 0x1266D712: D3DKMTQueryAdapterInfo (in /usr/lib/wsl/lib/libdxcore.so)
+==64503==    by 0x12AE6A14: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x12AEE220: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129E53E8: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x1257401A: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575E17: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x12575C86: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x125751C5: ??? (in /usr/lib/wsl/lib/libd3d12.so)
+==64503==    by 0x129D90AE: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129DB633: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==    by 0x129DBE3F: ??? (in /usr/lib/wsl/lib/libd3d12core.so)
+==64503==  Address 0x1ffeffcaf4 is on thread 1's stack
+==64503==  in frame #1, created by D3DKMTQueryAdapterInfo (???:)
+==64503== 
+==64503== Conditional jump or move depends on uninitialised value(s)
+==64503==    at 0x14615A34: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x1460E258: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x1460D3AF: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x146200AE: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x1711F52C: llvm::legacy::PassManagerImpl::run(llvm::Module&) (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x145F454D: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x145F4BF4: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x144E29E9: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x144EF95B: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x144DBFBC: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigc.so)
+==64503==    by 0x132DC0CE: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503==    by 0x132CBA38: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libigd12um64xel.so)
+==64503== 
+==64503== 
+==64503== Process terminating with default action of signal 2 (SIGINT)
+==64503==    at 0xF8C18A0: operator delete(void*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+==64503==    by 0x178BB62C: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x17119EDC: llvm::PMDataManager::~PMDataManager() (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x17119F3E: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x17119F56: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x17119EDC: llvm::PMDataManager::~PMDataManager() (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x1711A02E: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x1711A04C: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x1711B02E: llvm::PMTopLevelManager::~PMTopLevelManager() (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x1711B172: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x1711B19C: ??? (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503==    by 0x171195B2: llvm::legacy::PassManager::~PassManager() (in /usr/lib/wsl/drivers/iigd_dch.inf_amd64_9741ef1f4093481f/libLLVM-9.so)
+==64503== 
+==64503== HEAP SUMMARY:
+==64503==     in use at exit: 3,180,329 bytes in 12,882 blocks
+==64503==   total heap usage: 40,846 allocs, 27,964 frees, 10,116,376 bytes allocated
+==64503== 
+==64503== LEAK SUMMARY:
+==64503==    definitely lost: 15,089 bytes in 2 blocks
+==64503==    indirectly lost: 0 bytes in 0 blocks
+==64503==      possibly lost: 73,188 bytes in 40 blocks
+==64503==    still reachable: 3,092,052 bytes in 12,840 blocks
+==64503==                       of which reachable via heuristic:
+==64503==                         newarray           : 418,208 bytes in 7 blocks
+==64503==         suppressed: 0 bytes in 0 blocks
+==64503== Rerun with --leak-check=full to see details of leaked memory
+==64503== 
+==64503== Use --track-origins=yes to see where uninitialised values come from
+==64503== For lists of detected and suppressed errors, rerun with: -s
+==64503== ERROR SUMMARY: 80 errors from 17 contexts (suppressed: 0 from 0)

@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 12:00:10 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:14:56 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	fdf_exit_error(char *str, t_map *map)
 void	fdf_tmlx_free(t_map *map)
 {
 	
-	if (map->img)
+	if (map->img !=NULL)
 		mlx_delete_image(map->mlx, map->img);
-	if (map->mlx)
+	if (map->mlx!= NULL)
 		mlx_terminate(map->mlx);
 }

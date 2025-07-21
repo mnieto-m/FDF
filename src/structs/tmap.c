@@ -15,20 +15,19 @@ void fdf_mlx_init(t_map *map)
 
 	map->h_center_pt = H_CENTER_DEFAULT;
 	map->w_center_pt = W_CENTER_DEFAULT;
-	map->mlx = mlx_init(WIDTH,HEIGHT,"FDF", 1) ;
+	map->mlx = mlx_init(WIDTH,HEIGHT,"FDF",false) ;
 	if(!map->mlx)
 	{
 		ft_putstr_fd((char* )mlx_strerror(mlx_errno),1);
 		fdf_tmlx_free(map);
 	}
-	map->img = (mlx_new_image(map->mlx, WIDTH, HEIGHT));
+	map->img = mlx_new_image(map->mlx, WIDTH, HEIGHT);
 	if(!map->img)
 	{
 		ft_putstr_fd((char* )mlx_strerror(mlx_errno),1);
 		fdf_tmlx_free(map);
 	}
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	memset(map->img->pixels, 0, WIDTH * HEIGHT * sizeof(int32_t));
+	//memset(map->img->pixels, 0, WIDTH * HEIGHT * sizeof(int32_t));
 
 }
 void	fdf_tmap_init(int row_count, int col_count, t_map *map)
@@ -55,15 +54,13 @@ void	fdf_tmap_init(int row_count, int col_count, t_map *map)
 	fdf_tview_init(&map->view);
 }
 
-void	fdf_tmap_free(t_map **map)
+void	fdf_tmap_free(t_map *map)
 {
 
-	if((*map)->mlx != NULL)
-		fdf_tmlx_free((*map));
-	if (map || map != NULL)
-		free(map); // FREE t_node y t_mlx antes
-	free(*map);
-	*map = NULL;
+	if((map)->mlx != NULL)
+		fdf_tmlx_free((map));
+	free(map);
+	map = NULL;
 	exit(EXIT_FAILURE);
 }
 

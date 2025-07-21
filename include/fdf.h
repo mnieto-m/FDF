@@ -6,7 +6,7 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 15:13:34 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:32:53 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define INIT_SCALE 15
+# define INIT_SCALE 20
 
 // TODO: poner los booleans bien
 # define TRUE 0
@@ -98,7 +98,7 @@ void			fdf_tmlx_free(t_map *map);
 
 /* struct utils --------------------------------------------- */
 void			fdf_tmap_init(int row_count, int col_count, t_map *map);
-void			fdf_tmap_free(t_map **map);
+void			fdf_tmap_free(t_map *map);
 void			fdf_tmap_print(t_map *map);
 void			fdf_tnodes_print_xyz(int rows, int cols, t_node *node);
 void			fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes);
