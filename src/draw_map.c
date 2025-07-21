@@ -9,7 +9,6 @@ void draw_map(t_map *map)
 
 	x = -1;
 	y = -1;
-	memset(map->img->pixels, 0, WIDTH * HEIGHT * sizeof(int32_t));
 	while(++x < map->row)
 	{
 		y= -1;
@@ -22,4 +21,5 @@ void draw_map(t_map *map)
 					ft_bresenham(map, map->tab[idx], map->tab[idx + 1]);//data->map_plot[i][j + 1]);
 		}
 	}
+	mlx_image_to_window(map->mlx,map->img,0,0);
 }

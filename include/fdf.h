@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 16:32:53 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 19:09:56 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ typedef struct s_view
 typedef struct s_node
 {
 	int			xyz[3];
-	int			w_xyz[3];
+	double			w_xyz[3];
 	long		color;
 }				t_node;
 typedef struct s_temp
 {
-	int x;
-	int y;
+	double x;
+	double y;
 }			t_temp;
 
 typedef struct s_map_mdata
@@ -83,7 +83,7 @@ void			init_proyection(t_map *map);
 // double			*matrix_pr_xy(t_map *map, double xyz[3]);
 // double			*matrix_mult_square(t_map *map, double *m1, double *m2,
 // double *rslt);
-void			matrix_mult_pt(const int pt_o[3], int pt_rslt[3], double m[9]);
+void			matrix_mult_pt(const int pt_o[3], double pt_rslt[3], double m[9]);
 // double			*scale(t_map *map, int factor, double xyz[3]);
 void			matrix_rot_isometric(t_view *view);
 // double			*matrix_init(void);

@@ -48,7 +48,7 @@ void	fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes)
 		{
 			idx = (x * rows) + y;
 			pt = nodes[idx];
-			printf("\t\t(%i,%i,%i)", pt.w_xyz[0], pt.w_xyz[1], pt.w_xyz[2]);
+			printf("\t\t(%f,%f,%f)", pt.w_xyz[0], pt.w_xyz[1], pt.w_xyz[2]);
 			y++;
 		}
 		printf("\n");

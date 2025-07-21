@@ -15,10 +15,10 @@ static void	ft_bresh_low(t_map *data, t_node p0, t_node p1)
 	int		diff;
 	//int		colour;
 
-	d.x = round(abs(p1.w_xyz[0] - p0.w_xyz[0]));
+	d.x = round(fabs(p1.w_xyz[0] - p0.w_xyz[0]));
 	d.y = round(p1.w_xyz[1] - p0.w_xyz[1]);
-	yi = d.y / abs(d.y);
-	d.y = abs(d.y);
+	yi = d.y / fabs(d.y);
+	d.y = fabs(d.y);
 	diff = (2 * d.y) - d.x;
 	ft_point_ini(&p, p0);
 	while (p.x < round(p1.w_xyz[0]))
@@ -43,9 +43,9 @@ static void	ft_bresh_high(t_map *data, t_node p0, t_node p1)
 	//int		colour;
 
 	d.x = round(p1.w_xyz[0] - p0.w_xyz[0]);
-	d.y = round(abs(p1.w_xyz[1] - p0.w_xyz[1]));
-	xi = d.x / abs(d.x);
-	d.x = abs(d.x);
+	d.y = round(fabs(p1.w_xyz[1] - p0.w_xyz[1]));
+	xi = d.x / fabs(d.x);
+	d.x = fabs(d.x);
 	diff = (2 * d.x) - d.y;
 	ft_point_ini(&p, p0);
 	while (p.y < round(p1.w_xyz[1]))
@@ -64,7 +64,7 @@ static void	ft_bresh_high(t_map *data, t_node p0, t_node p1)
 
 void ft_bresenham(t_map *map, t_node p0, t_node p1 )
 {
-	if(round(abs(p1.w_xyz[1] - p0.w_xyz[1])) <round(abs(p1.w_xyz[0] - p0.w_xyz[0])) )
+	if(round(fabs(p1.w_xyz[1] - p0.w_xyz[1])) <round(fabs(p1.w_xyz[0] - p0.w_xyz[0])) )
 	{
 		if(p0.w_xyz[0] > p1.w_xyz[0])
 			ft_bresh_low(map,p1,p0);

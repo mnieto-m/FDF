@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:24:40 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/19 18:35:27 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 19:08:51 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
 // NOTE: this is gonna be the ONE
-void	matrix_mult_pt(const int pt_o[3], int pt_rslt[3], double m[9])
+void	matrix_mult_pt(const int pt_o[3], double pt_rslt[3], double m[9])
 {
 	int	i;
 	int	j;

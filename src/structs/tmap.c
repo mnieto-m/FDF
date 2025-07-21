@@ -27,7 +27,7 @@ void fdf_mlx_init(t_map *map)
 		ft_putstr_fd((char* )mlx_strerror(mlx_errno),1);
 		fdf_tmlx_free(map);
 	}
-	//memset(map->img->pixels, 0, WIDTH * HEIGHT * sizeof(int32_t));
+	memset(map->img->pixels, 0, WIDTH * HEIGHT * sizeof(int32_t));
 
 }
 void	fdf_tmap_init(int row_count, int col_count, t_map *map)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:19:20 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 16:20:43 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:52:54 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void ft_key_hook(t_map * map)
 }
 
 
-/* void ft_hook (t_map *map)
+void ft_hook (t_map *map)
 {
 	mlx_loop(map->mlx); 
  	//mlx_loop_hook(map->mlx, ft_key_hook, map);
 	//mlx_scroll_hook(map->mlx,ft_hook_scroll,map);
 	//mlx_mouse_hook(map->mlx,ft_hook_mouse,map); 
-}  */
+}  
