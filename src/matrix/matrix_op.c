@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 19:24:40 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 19:08:51 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/22 17:42:50 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	matrix_mult_pt(const int pt_o[3], double pt_rslt[3], double m[9])
 	while (++i < 3)
 	{
 		j = -1;
-		// pt_rslt[i] = 0;
+		pt_rslt[i] = 0;
 		while (++j < 3)
 		{
 			pt_rslt[i] += m[(i * 3) + j] * pt_o[j];

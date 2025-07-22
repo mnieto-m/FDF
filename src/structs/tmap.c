@@ -32,25 +32,8 @@ void fdf_mlx_init(t_map *map)
 }
 void	fdf_tmap_init(int row_count, int col_count, t_map *map)
 {
-	// ft_memset(map, 0, sizeof(t_map)); // changed malloc for calloc on allocation
-	// map->tab = ft_calloc(1, sizeof(t_node) * row_count * col_count);
-	// if (!map->tab)
-	// 	fdf_exit_error(NULL, map);
 	(map)->row = row_count;
 	(map)->len_row = col_count;
-	// map->mlx.mlx = mlx_init(WIDTH, HEIGHT, "FDF", 1);
-	// if (!map->mlx.mlx)
-	// {
-	// 	perror("Error on mlx_init.");
-	// 	fdf_exit_error(NULL, map);
-	// }
-	// map->mlx.img = mlx_new_image(map->mlx.mlx, 256, 256);
-	// if (!map->mlx.img)
-	// {
-	// 	perror("Error on mlx_mew_image");
-	// 	fdf_exit_error(NULL, map);
-	// }
-	// NOTE: add init of view here
 	fdf_tview_init(&map->view);
 }
 
