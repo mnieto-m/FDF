@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 19:09:56 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/22 15:25:32 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define INIT_SCALE 20
+# define INIT_SCALE 5
 
 // TODO: poner los booleans bien
 # define TRUE 0
@@ -44,7 +44,7 @@ typedef struct s_view
 typedef struct s_node
 {
 	int			xyz[3];
-	double			w_xyz[3];
+	double		w_xyz[3];
 	long		color;
 }				t_node;
 typedef struct s_temp
@@ -57,8 +57,6 @@ typedef struct s_map_mdata
 {
 	int			row;
 	int			len_row;
-	int max_value; // max_z
-	int min_value; // min_z
 	double		h_center_pt;
 	double		w_center_pt;
 	void		*window;

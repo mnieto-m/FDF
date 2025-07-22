@@ -61,21 +61,26 @@ void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 	int			idx;
 	long long	color_comma_idx;
 	int			z_flag;
+	char		*comma_ptr;
 
 	z_flag = 0;
 	idx = (row * map->len_row) + col;
-	color_comma_idx = ft_strchr(inputs[idx], ',') - inputs[idx]; // avoid split
 	map->tab[idx].xyz[0] = row;
 	map->tab[idx].xyz[1] = col;
 	map->tab[idx].xyz[2] = ft_atoi_signal(inputs[idx], &z_flag); // Z_SCALE
 	if (z_flag == -1)
 		fdf_exit_error(NULL, map);
-	if (color_comma_idx <= 0) // no color
+	comma_ptr = ft_strchr(inputs[idx], ',');
+	if (!comma_ptr)
+	{
 		map->tab[idx].color = ft_atoi_base("0XFFFFFF", HEXADECIMAL);
-	else if(ft_strncmp( inputs[idx]+ color_comma_idx + 1,"0X",2) == 0)
-		map->tab[idx].color = ft_atoi_base(inputs[idx]+ color_comma_idx + 1,
-			HEXADECIMAL);
+	}
 	else
-		map->tab[idx].color = ft_atoi_base(inputs[idx]+ color_comma_idx + 1,
-			hexadecimal);
+	{
+		color_comma_idx = comma_ptr - inputs[idx];
+		if (ft_strncmp(inputs[idx] + color_comma_idx + 1, "0X", 2) == 0)
+			map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx + 1, HEXADECIMAL);
+		else
+			map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx + 1, hexadecimal);
+	}
 }

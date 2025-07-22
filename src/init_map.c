@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 16:33:55 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:12:41 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,68 @@ void fdf_escale_view_pts(t_map *map)
 		}
 	}
 }
+void find_max_min(t_map *map, t_temp *min, t_temp *max)
+{
+	int idx;
+	int total_nodes;
 
+	total_nodes = map->row * map->len_row;
+	idx = 0;
+
+	min->x = map->tab[0].w_xyz[0];
+	min->y = map->tab[0].w_xyz[1];
+	max->x = map->tab[0].w_xyz[0];
+	max->y = map->tab[0].w_xyz[1];
+
+	while (++idx < total_nodes)
+	{
+		if (map->tab[idx].w_xyz[0] < min->x)
+			min->x = map->tab[idx].w_xyz[0];
+		else if (map->tab[idx].w_xyz[0] > max->x)
+			max->x = map->tab[idx].w_xyz[0];
+
+		if (map->tab[idx].w_xyz[1] < min->y)
+			min->y = map->tab[idx].w_xyz[1];
+		else if (map->tab[idx].w_xyz[1] > max->y)
+			max->y = map->tab[idx].w_xyz[1];
+
+	}
+}
+
+t_temp traslation_diff(t_map *map)
+{
+	t_temp rst;
+	t_temp min;
+	t_temp max;
+	
+	find_max_min(map, &min, &max);
+	rst.x = (max.x  - min.x)/2;
+	rst.y = (max.y  - min.y)/2;
+	rst.x += W_CENTER_DEFAULT;
+	rst.y += H_CENTER_DEFAULT;
+	return(rst);	
+}
+void fdf_traslate_view_pts(t_map *map)
+{
+	int row;
+	int col;
+	int idx;
+	t_temp traslation;
+	
+	row = -1;
+
+	traslation = traslation_diff(map);
+	while(++row < map->row)
+	{
+		col = -1;
+		while(++col < map->len_row)
+		{
+			idx = (row * map->len_row) + col;
+			map->tab[idx].w_xyz[0] += traslation.x;
+			map->tab[idx].w_xyz[1] += traslation.y;
+		}
+	}	
+}
 void 	init_map_mlx(char *str, t_map **map)
 {
 	int	fd;
@@ -114,7 +175,8 @@ void 	init_map_mlx(char *str, t_map **map)
 		fdf_exit_error(NULL, *map);
 	fdf_build_view_pts(*map);
 	fdf_escale_view_pts(*map);
-	fdf_mlx_init((*map));
+	fdf_traslate_view_pts(*map);
+
 	// CHECK
 	//fdf_tmap_print(*map);
 }

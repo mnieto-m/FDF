@@ -24,7 +24,7 @@ static void	ft_bresh_low(t_map *data, t_node p0, t_node p1)
 	while (p.x < round(p1.w_xyz[0]))
 	{
 		//colour = ft_lerp_rgb(p0.colour, p1.colour, fabs(p0.x - p.x), d.x);
-		mlx_put_pixel(data->img, p.x, p.y, p0.color);//cambiar color
+		mlx_put_pixel(data->img, p.x, p.y, 0);//cambiar color
 		if (diff > 0)
 		{
 			p.y += yi;
@@ -50,8 +50,9 @@ static void	ft_bresh_high(t_map *data, t_node p0, t_node p1)
 	ft_point_ini(&p, p0);
 	while (p.y < round(p1.w_xyz[1]))
 	{
+	
 		//colour = ft_lerp_rgb(p0.colour, p1.colour, fabs(p0.y - p.y), d.y);
-		mlx_put_pixel(data->img, p.x, p.y, p0.color);//cambiar color
+		mlx_put_pixel(data->img, p.x, p.y, 0);//cambiar color
 		if (diff > 0)
 		{
 			p.x += xi;

@@ -15,7 +15,7 @@ void fdf_mlx_init(t_map *map)
 
 	map->h_center_pt = H_CENTER_DEFAULT;
 	map->w_center_pt = W_CENTER_DEFAULT;
-	map->mlx = mlx_init(WIDTH,HEIGHT,"FDF",false) ;
+	map->mlx = mlx_init(WIDTH,HEIGHT,"FDF",1) ;
 	if(!map->mlx)
 	{
 		ft_putstr_fd((char* )mlx_strerror(mlx_errno),1);
@@ -27,7 +27,7 @@ void fdf_mlx_init(t_map *map)
 		ft_putstr_fd((char* )mlx_strerror(mlx_errno),1);
 		fdf_tmlx_free(map);
 	}
-	memset(map->img->pixels, 0, WIDTH * HEIGHT * sizeof(int32_t));
+	memset(map->img->pixels, 255, WIDTH * HEIGHT * sizeof(int32_t));
 
 }
 void	fdf_tmap_init(int row_count, int col_count, t_map *map)
@@ -69,8 +69,6 @@ void	fdf_tmap_print(t_map *map)
 	printf("tmap satus:\n");
 	printf("\trow:\t\t%i\n", map->row);
 	printf("\tlen_row:\t%i\n", map->len_row);
-	printf("\tmax_value:\t%i\n", map->max_value);
-	printf("\tmin_value:\t%i\n", map->min_value);
 	printf("node array input:\n");
 	fdf_tnodes_print_xyz(map->row, map->len_row, map->tab);
 	printf("node array window\n");
