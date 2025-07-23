@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/22 13:05:44 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/23 12:38:02 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,10 @@ int	read_map(char *str, t_map *map, int fd)
 		buffer = ft_strjoin_free(buffer, aux);
 		aux = get_next_line(fd);
 	}
+	printf("%s\n", buffer);
+	printf("FILAS:%i\n", map->row);
+	printf("COLUMANAS:%i\n", map->len_row);
+	
 	set_value(buffer, map);
 	free(buffer);
 	buffer = NULL;

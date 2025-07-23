@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/22 15:12:41 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/23 12:52:35 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,27 @@ static int	count_struct(int *row, int *len_row, int fd)
 	buffer = get_next_line(fd);
 	if(buffer == NULL)
 		return(flag = FALSE);
+	*len_row = 0;
+	*row = 0;
 	while (buffer)
 	{
 		if (*row == 0)
+		{
+			//printf( "COLUMNAS vacias:%ls\n",len_row);
 			(*len_row) = check_token(buffer, ' ');
+			//printf( "COLUMNAS check_token:%d\n",(check_token(buffer, ' ')));
+		}
 		else if ((*len_row) != check_token(buffer, ' '))
 			flag = FALSE;
+		//printf( "FILAS ACTUALES:%d\n",(*row));
 		(*row)++;
+		//printf("AUMENTO FILAS:%d\n",(*row));
 		free(buffer);
 		buffer = get_next_line(fd);
+		//printf( "COLUMNAS FINALES:%d\n",(*len_row));
 	}
+	printf( "FILAS FINALES:%d\n",(*row));
+	printf( "COLUMNAS FINALES:%d\n",(*len_row));
 	close(fd);
 	return (flag);
 }
