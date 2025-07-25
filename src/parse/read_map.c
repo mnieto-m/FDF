@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/23 12:38:02 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/24 13:12:02 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,16 @@ static char	*ft_replace_char(char find, char replace, char *str)
 	}
 	return (str);
 }
-
+void printf_split(char **str)
+{
+	int i;
+	i=0;
+	while (str)
+	{
+		printf(" valores de aux%s\n",str[i]);
+		i++;	
+	}
+}
 // NOTE: refactor this function on the fdf_tnode_init
 static void	set_value(char *str, t_map *map)
 {
@@ -105,6 +114,7 @@ static void	set_value(char *str, t_map *map)
 	char	**aux;
 
 	aux = ft_split(ft_replace_char('\n', ' ', str), ' ');
+	//printf_split(aux);
 	if (!aux)
 		fdf_exit_error(NULL, map);
 	row = -1; // row
