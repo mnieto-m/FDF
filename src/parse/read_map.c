@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/24 13:12:02 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/29 20:38:47 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ static void	set_value(char *str, t_map *map)
 	char	**aux;
 
 	aux = ft_split(ft_replace_char('\n', ' ', str), ' ');
+	//printf("total: rows: %i, cols: %i\n", map->row, map->len_row);
 	//printf_split(aux);
 	if (!aux)
 		fdf_exit_error(NULL, map);
@@ -123,6 +124,7 @@ static void	set_value(char *str, t_map *map)
 		col = -1; // col
 		while (++col < map->len_row)
 		{
+			//printf("row: %i, col: %i\n", row, col);
 			fdf_tnode_init(row, col, aux, map);
 		}
 	}
@@ -148,9 +150,9 @@ int	read_map(char *str, t_map *map, int fd)
 		buffer = ft_strjoin_free(buffer, aux);
 		aux = get_next_line(fd);
 	}
-	printf("%s\n", buffer);
-	printf("FILAS:%i\n", map->row);
-	printf("COLUMANAS:%i\n", map->len_row);
+	//printf("%s\n", buffer);
+	//printf("FILAS:%i\n", map->row);
+	//rintf("COLUMANAS:%i\n", map->len_row);
 	
 	set_value(buffer, map);
 	free(buffer);

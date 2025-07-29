@@ -24,8 +24,7 @@ void	fdf_tnodes_print_xyz(int rows, int cols, t_node *nodes)
 		{
 			idx = (x * cols) + y;
 			pt = nodes[idx];
-			printf("\t\t(%i,%i,%i), %li", pt.xyz[0], pt.xyz[1], pt.xyz[2],
-				pt.color);
+			printf("\t\t(%i,%i,%i), %li", pt.xyz[0], pt.xyz[1], pt.xyz[2],pt.color);
 			y++;
 		}
 		printf("\n");
@@ -55,6 +54,14 @@ void	fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes)
 		x++;
 	}
 }
+//funcion para imprimir una array de strings (despues de un split)
+void printf_split2(char **inputs){
+	while (*inputs){
+		printf("\t%s\n", *inputs);
+		inputs++;
+	}
+}
+
 
 void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 {
@@ -67,7 +74,10 @@ void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 	idx = (row * map->len_row) + col;
 	map->tab[idx].xyz[0] = row;
 	map->tab[idx].xyz[1] = col;
+	// printf_split2(inputs);
+	//printf("idx: %d\n", idx);
 	map->tab[idx].xyz[2] = ft_atoi_signal(inputs[idx], &z_flag); // Z_SCALE
+	//printf("z: %d\n", map->tab[idx].xyz[2]);
 	if (z_flag == -1)
 		fdf_exit_error(NULL, map);
 	comma_ptr = ft_strchr(inputs[idx], ',');

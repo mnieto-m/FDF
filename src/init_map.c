@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/23 12:52:35 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/29 21:43:07 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static int	count_struct(int *row, int *len_row, int fd)
 		buffer = get_next_line(fd);
 		//printf( "COLUMNAS FINALES:%d\n",(*len_row));
 	}
-	printf( "FILAS FINALES:%d\n",(*row));
-	printf( "COLUMNAS FINALES:%d\n",(*len_row));
+	//printf( "FILAS FINALES:%d\n",(*row));
+	//printf( "COLUMNAS FINALES:%d\n",(*len_row));
 	close(fd);
 	return (flag);
 }
@@ -106,23 +106,24 @@ void find_max_min(t_map *map, t_temp *min, t_temp *max)
 	int total_nodes;
 
 	total_nodes = map->row * map->len_row;
-	idx = 0;
+	idx = -1;
 
-	min->x = map->tab[0].w_xyz[0];
-	min->y = map->tab[0].w_xyz[1];
-	max->x = map->tab[0].w_xyz[0];
-	max->y = map->tab[0].w_xyz[1];
+	min->x = DBL_MAX;
+	min->y = -DBL_MAX;
+	max->x = -DBL_MAX;
+	max->y = DBL_MAX;
+
 
 	while (++idx < total_nodes)
 	{
 		if (map->tab[idx].w_xyz[0] < min->x)
 			min->x = map->tab[idx].w_xyz[0];
-		else if (map->tab[idx].w_xyz[0] > max->x)
+		if (map->tab[idx].w_xyz[0] > max->x)
 			max->x = map->tab[idx].w_xyz[0];
 
-		if (map->tab[idx].w_xyz[1] < min->y)
+		if (map->tab[idx].w_xyz[1] > min->y)
 			min->y = map->tab[idx].w_xyz[1];
-		else if (map->tab[idx].w_xyz[1] > max->y)
+		if (map->tab[idx].w_xyz[1] < max->y)
 			max->y = map->tab[idx].w_xyz[1];
 
 	}
@@ -135,10 +136,13 @@ t_temp traslation_diff(t_map *map)
 	t_temp max;
 	
 	find_max_min(map, &min, &max);
-	rst.x = (max.x  - min.x)/2;
-	rst.y = (max.y  - min.y)/2;
-	rst.x += W_CENTER_DEFAULT;
-	rst.y += H_CENTER_DEFAULT;
+	rst.x = (max.x + min.x)/2;
+	rst.y = (max.y + min.y)/2;
+	//printf("x:%i,y:%i\n",map->row,map->len_row);
+	//printf("x:%f,y:%f\n",rst.x,rst.y);
+
+	rst.x = (double)W_CENTER_DEFAULT - rst.x;
+	rst.y =(double) H_CENTER_DEFAULT - rst.y ;
 	return(rst);	
 }
 void fdf_traslate_view_pts(t_map *map)
@@ -151,6 +155,7 @@ void fdf_traslate_view_pts(t_map *map)
 	row = -1;
 
 	traslation = traslation_diff(map);
+	//printf("row:%f,colum:%f\n",traslation.x,traslation.y);
 	while(++row < map->row)
 	{
 		col = -1;
@@ -185,7 +190,9 @@ void 	init_map_mlx(char *str, t_map **map)
 	if (read_map(str, *map, fd) != TRUE)
 		fdf_exit_error(NULL, *map);
 	fdf_build_view_pts(*map);
+	
 	fdf_escale_view_pts(*map);
+	//print_nodes(*map);
 	fdf_traslate_view_pts(*map);
 
 	// CHECK

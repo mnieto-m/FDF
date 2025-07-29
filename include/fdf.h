@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/23 13:25:56 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/29 21:43:34 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include "MLX42/MLX42.h"
 # include <math.h>
 # include <errno.h>
+# include <float.h>
 
 
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define INIT_SCALE 10
+# define INIT_SCALE 2
 
 // TODO: poner los booleans bien
 # define TRUE 0
@@ -68,6 +69,7 @@ typedef struct s_map_mdata
 	t_node tab[]; // array of nodes
 }				t_map;
 
+void print_nodes(t_map *map);
 // init map, read map
 void			init_map_mlx(char *str, t_map **map);
 int				read_map(char *str, t_map *map, int fd);

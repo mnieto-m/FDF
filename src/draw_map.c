@@ -14,10 +14,10 @@ void draw_map(t_map *map)
 		y= -1;
 		while(++y < map->len_row)
 		{
-			idx = (x * map->len_row) + y;
+			idx = (x * map->len_row ) + y;
 			if (x < (map->row - 1))
 					ft_bresenham(map, map->tab[idx], map->tab[idx + map->len_row]);//data->map_plot[i + 1][j]);
-			if (y < (map->len_row - 1))
+			if (y < (map->len_row - 1 ))
 					ft_bresenham(map, map->tab[idx], map->tab[idx + 1]);//data->map_plot[i][j + 1]);
 		}
 	}
