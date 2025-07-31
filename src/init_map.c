@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/29 21:43:07 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/31 21:50:31 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,16 +183,18 @@ void 	init_map_mlx(char *str, t_map **map)
 	// NOTE: int *row can be directly &(map->row) (the same for col)
 	if (count_struct(&row, &len_row, fd) != TRUE)
 		fdf_exit_error(NULL, NULL); // map es null
+	//printf( "FILAS FINALES:%d\n",(row));
+	//printf( "COLUMNAS FINALES:%d\n",(len_row));
 	*map = ft_calloc(1, sizeof(t_map) + sizeof(t_node) * row * len_row);
 	if (!*map)
 		return ;
+	//print_nodes(*map);
 	fdf_tmap_init(row, len_row, *map);
 	if (read_map(str, *map, fd) != TRUE)
 		fdf_exit_error(NULL, *map);
 	fdf_build_view_pts(*map);
 	
 	fdf_escale_view_pts(*map);
-	//print_nodes(*map);
 	fdf_traslate_view_pts(*map);
 
 	// CHECK

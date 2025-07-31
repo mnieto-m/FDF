@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/29 21:43:34 by mario            ###   ########.fr       */
+/*   Updated: 2025/07/31 18:20:20 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define INIT_SCALE 2
+# define INIT_SCALE 10
 
 // TODO: poner los booleans bien
 # define TRUE 0
