@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/31 18:24:17 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/02 22:03:16 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ int	read_map(char *str, t_map *map, int fd)
 	char		*aux;
 	int			flag;
 
+	printf("read map\n");
 	flag = TRUE;
 	fd = open(str, O_RDONLY);
 	if (fd < 1)

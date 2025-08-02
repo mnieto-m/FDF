@@ -7,6 +7,7 @@ void draw_map(t_map *map)
 	int	y;
 	int idx;
 
+	printf("draw map\n");
 	x = -1;
 	y = -1;
 	while(++x < map->row)

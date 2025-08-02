@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:49:11 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/31 21:50:20 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/02 22:17:22 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,38 +45,19 @@ int	main(int argc, char **argv)
 	init_map_mlx(argv[1], &map);
 	//print_nodes(map);
 	fdf_mlx_init((map));
+	//bucle de dibujado
 	draw_map(map);
-	ft_hook(map);
+	fdf_loop(map);
 	fdf_tmap_free(map);
 	return (0);
 }
 
 /**
 *TODO:
-*	-entender y acabar trasalcion :falta pulir
-*	-Mapas no validos que si son validos numeros negativos y columnas con un salto de linea
-*	- Hooks
-*	- funcion de colors
-*	-
+*	- HOOKS ESC
+	- Cerrar ventana con la crucecita
+	- COLORES
+	- HOOK : ¿Rotacion?
+	- HOOK : Zoom (escala)
+	- HOOK : Pan/Move (trasladar)
 */
-/**
- * GENERICS:
- *  - para cada struct
- * 		- funcion para printear cada estructura (para hacer checks parciales)
- *  	- (en el caso de que haya variables malloqueadas) funcion para hacer free
- *
-	- funcion de salida de error que haga el exit failure y llame al free (protegido)
- *
- * TENEMOS:
- * 	- Inicializado el mapa
- *  - Parseado el mapa
- *  - Inicializada la mlx
- *
- * TODO:
- *  - Rellenar la mlx (revisar que hay que relenar?)
- *  - Bucle de renderizado que contendrá
- * 		- nota mental: init_projection(map) no existe,
-			qué nombre habrá adquirido?
- * 		- Un primer calculo de la vista a mostrar (de primeras,
-			puntos en planta)
- */

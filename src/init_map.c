@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/31 21:50:31 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/02 22:05:32 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	count_struct(int *row, int *len_row, int fd)
 	char	*buffer;
 	int		flag;
 
+	printf("count struct\n");
 	flag = TRUE;
 	buffer = get_next_line(fd);
 	if(buffer == NULL)
@@ -60,6 +61,7 @@ static void	fdf_build_view_pts(t_map *map)
 	int	y;
 	int	idx;
 
+	printf("build view pts\n");
 	x = -1;
 	while (++x < map->row)
 	{
@@ -89,6 +91,7 @@ void fdf_escale_view_pts(t_map *map)
 	int y;
 	int idx;
 	
+	printf("scale view pts\n");
 	x = -1;
 	while(++x < map->row)
 	{
@@ -152,6 +155,8 @@ void fdf_traslate_view_pts(t_map *map)
 	int idx;
 	t_temp traslation;
 	
+	printf("traslate view pts\n");
+
 	row = -1;
 
 	traslation = traslation_diff(map);
@@ -173,7 +178,7 @@ void 	init_map_mlx(char *str, t_map **map)
 	int	row;
 	int	len_row;
 	
-
+	printf("init map mlx\n");
 	row = 0;
 	len_row = 0;
 	fd = open(str, O_RDONLY);

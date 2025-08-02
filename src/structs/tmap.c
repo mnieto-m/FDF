@@ -12,7 +12,7 @@
  */
 void fdf_mlx_init(t_map *map)
 {
-
+	printf("init mlx init\n");
 	map->h_center_pt = H_CENTER_DEFAULT;
 	map->w_center_pt = W_CENTER_DEFAULT;
 	map->mlx = mlx_init(WIDTH,HEIGHT,"FDF",1) ;
@@ -32,6 +32,7 @@ void fdf_mlx_init(t_map *map)
 }
 void	fdf_tmap_init(int row_count, int col_count, t_map *map)
 {
+	printf("tmap init\n");
 	(map)->row = row_count;
 	(map)->len_row = col_count;
 	fdf_tview_init(&map->view);
