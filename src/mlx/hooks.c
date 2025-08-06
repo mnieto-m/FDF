@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:19:20 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/02 22:33:07 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:52:58 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void ft_hook_mouse(void *param)
 
 void handle_move(t_map *map)
 {
+	(void)map;
 	/* 	if (mlx_is_key_down(param, MLX_KEY_UP))
 		???return();
 	if (mlx_is_key_down(param, MLX_KEY_DOWN))
@@ -45,6 +46,7 @@ void handle_move(t_map *map)
 
 void handle_zoom(t_map *map)
 {
+	(void)map;
 	// 	if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_LEFT));
 	// 	 ft_rescale();
 	// if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_RIGHT));

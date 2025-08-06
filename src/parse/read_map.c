@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/06 11:44:25 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/06 12:10:06 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static void	set_value(char *str, t_map *map)
 	int		col;
 	char	**aux;
 
-	aux = ft_split_str(str, " \n");
+	aux = ft_split_str(str, "\n ");
 	//printf("total: rows: %i, cols: %i\n", map->row, map->len_row);
 	//printf_split(aux);
 	if (!aux)

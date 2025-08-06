@@ -10,26 +10,41 @@ static void	ft_dfree(char **tab, int i)
 	free(tab);
 }
 
-static int	ft_numbword(char const *s, const char *c)
+static int	ft_isset(char ch, const char *set)
 {
-	int	i;
-	int	numbword;
-
-	i = 0;
-	numbword = 0;
-	while (s[i] != '\0')
+	int k = 0;
+	while (set[k])
 	{
-		if (s[i] != c)
-		{
-			numbword++;
-			while (s[i] != c && s[i] != '\0')
-				i++;
-		}
-		else
+		if (ch == set[k])
+			return (1);
+		k++;
+	}
+	return (0);
+}
+
+static int	ft_numbword(const char *s, const char *c)
+{
+	int i = 0;
+	int j = 0;
+	int numbword = 0;
+
+	while (s[i])
+	{
+		while (s[i] && ft_isset(s[i], c))
 			i++;
+
+		j = i;
+		while (s[j] && !ft_isset(s[j], c))
+			j++;
+
+		if (j > i) 
+			numbword++;
+
+		i = j;
 	}
 	return (numbword);
 }
+
 /* char	*ft_strchr(const char *s,str c)
 {
 	int	i;
@@ -82,7 +97,7 @@ char	**ft_split_str(char const *s,const char *c)
 		return (NULL);
 	while (*s)
 	{
-		while (*s == c && *s)
+		while ( *s && ft_isset(*s, c) )
 			s++;
 		if (*s)
 		{

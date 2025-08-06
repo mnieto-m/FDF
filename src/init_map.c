@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/02 22:05:32 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/08/06 14:51:22 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ static int	count_struct(int *row, int *len_row, int fd)
 		}
 		else if ((*len_row) != check_token(buffer, ' '))
 			flag = FALSE;
-		//printf( "FILAS ACTUALES:%d\n",(*row));
+		printf("%i\n", flag);
+		printf( "FILAS ACTUALES:%d\n",(*row));
 		(*row)++;
 		//printf("AUMENTO FILAS:%d\n",(*row));
 		free(buffer);
 		buffer = get_next_line(fd);
 		//printf( "COLUMNAS FINALES:%d\n",(*len_row));
 	}
+	//printf("%i\n", flag);
 	//printf( "FILAS FINALES:%d\n",(*row));
 	//printf( "COLUMNAS FINALES:%d\n",(*len_row));
 	close(fd);
