@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:19:20 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 18:52:54 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/02 22:33:07 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ void ft_hook_mouse(void *param)
 	if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_RIGHT));
 		 ft_rescale(); 
 }*/
-void ft_key_hook(t_map * map)
+
+void handle_move(t_map *map)
 {
-	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
-		fdf_exit_error(NULL,map);
-/* 	if (mlx_is_key_down(param, MLX_KEY_UP))
+	/* 	if (mlx_is_key_down(param, MLX_KEY_UP))
 		???return();
 	if (mlx_is_key_down(param, MLX_KEY_DOWN))
 		????return();
@@ -42,14 +41,36 @@ void ft_key_hook(t_map * map)
 		????return();
 	if (mlx_is_key_down(param, MLX_KEY_RIGHT))
 		????return(); */
-	
+}
+
+void handle_zoom(t_map *map)
+{
+	// 	if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_LEFT));
+	// 	 ft_rescale();
+	// if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_RIGHT));
+	// 	 ft_rescale(); 
+}
+
+void ft_key_hook(void *data)
+{
+	t_map *map = data;
+	printf("key hook\n");
+	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
+		fdf_exit_error(NULL,map);
+	handle_move(map);
+	handle_zoom(map);
+	//dibujar
 }
 
 
-void ft_hook (t_map *map)
+void fdf_loop(t_map *map)
 {
-	mlx_loop(map->mlx); 
- 	//mlx_loop_hook(map->mlx, ft_key_hook, map);
+	(void)map;
+	printf("loop de renderizado\n");
+	mlx_loop_hook(map->mlx, ft_key_hook, map);
+
+	mlx_loop(map->mlx);
+	
 	//mlx_scroll_hook(map->mlx,ft_hook_scroll,map);
 	//mlx_mouse_hook(map->mlx,ft_hook_mouse,map); 
 }  

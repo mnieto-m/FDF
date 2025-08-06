@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/01 15:23:51 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/02 22:13:17 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int				read_map(char *str, t_map *map, int fd);
 int				checkfile_fdf(char *str);
 int				check_argv(int argc, char **argv);
 long				ft_atoi_base(char *str, char *base_from);
-void			ft_hook(t_map *map);
+void			fdf_loop(t_map *map);
 void			init_proyection(t_map *map);
 
 // double			*matrix_pr_xy(t_map *map, double xyz[3]);
