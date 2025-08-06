@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/02 22:03:16 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:44:25 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	l2 = ft_strlen(s2);
 	if ((l1 + l2) == 0)
 		return (NULL);
-	str = (malloc(sizeof(char) * (l1 + l2 + 1)));
+	str = (ft_calloc(sizeof(char),  (l1 + l2 + 1)));
 	if (!str)
 		return (NULL);
 	str[l1 + l2] = '\0';
@@ -81,7 +81,7 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	}
 }*/
 // TODO: this can be added to Libft as is a general function
-static char	*ft_replace_char(char find, char replace, char *str)
+/* static char	*ft_replace_char(char find, char replace, char *str)
 {
 	int i;
 
@@ -94,7 +94,7 @@ static char	*ft_replace_char(char find, char replace, char *str)
 		}
 	}
 	return (str);
-}
+} */
 void printf_split(char **str)
 {
 	int i;
@@ -113,7 +113,7 @@ static void	set_value(char *str, t_map *map)
 	int		col;
 	char	**aux;
 
-	aux = ft_split(ft_replace_char('\n', ' ', str), ' ');
+	aux = ft_split_str(str, " \n");
 	//printf("total: rows: %i, cols: %i\n", map->row, map->len_row);
 	//printf_split(aux);
 	if (!aux)

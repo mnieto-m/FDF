@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/02 22:13:17 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:44:31 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void			fdf_tview_print(t_view *view);
 void ft_bresenham(t_map *map, t_node p0, t_node p1 );
 void fdf_mlx_init(t_map *map);
 void draw_map(t_map *map);
+char	**ft_split_str(char const *s,const char *c);
 #endif
 
 /* 3W test.c ./MLX42/build/libmlx42.a -IMLX42/include/MLX42 -ldl -lglfw

@@ -35,7 +35,8 @@ FILES = fdf \
 		structs/tnode \
 		structs/tview \
 		draw_map\
-		bresenham
+		bresenham\
+		split_str
 
 
 # FILES_ADD
