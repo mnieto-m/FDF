@@ -6,30 +6,12 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:19:20 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/06 11:52:58 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/07 20:25:20 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-/* 
-static int close_win(t_map *map)
-{
-	mlx_close_window(map->mlx->mlx);
-	ft_free_screen(map);
-	exit(EXIT_SUCCESS);
-}
- void ft_hook_scroll(void *param)
-{
 
-} 
-void ft_hook_mouse(void *param)
-{
-
-	if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_LEFT));
-		 ft_rescale();
-	if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_RIGHT));
-		 ft_rescale(); 
-}*/
 
 void handle_move(t_map *map)
 {
@@ -44,13 +26,18 @@ void handle_move(t_map *map)
 		????return(); */
 }
 
-void handle_zoom(t_map *map)
+void handle_zoom(double xdelta, double ydelta, void *data)
 {
-	(void)map;
-	// 	if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_LEFT));
-	// 	 ft_rescale();
-	// if(mlx_is_mouse_down(param,MLX_MOUSE_BUTTON_RIGHT));
-	// 	 ft_rescale(); 
+	t_map *map;
+	map = data;
+	printf("x:%f, y:%f\n", xdelta, ydelta);
+	if (ydelta > 0)
+		map->scale += 0.1;
+	else
+		map->scale -= 0.1;
+	printf("map->scale:%f, y:%f\n", map->scale, ydelta);
+	rescale(map,map->scale);//disminurir la escala ;
+
 }
 
 void ft_key_hook(void *data)
@@ -59,8 +46,7 @@ void ft_key_hook(void *data)
 	printf("key hook\n");
 	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
 		fdf_exit_error(NULL,map);
-	handle_move(map);
-	handle_zoom(map);
+	//handle_move(map);
 	//dibujar
 }
 
@@ -70,9 +56,6 @@ void fdf_loop(t_map *map)
 	(void)map;
 	printf("loop de renderizado\n");
 	mlx_loop_hook(map->mlx, ft_key_hook, map);
-
+	mlx_scroll_hook(map->mlx,(mlx_scrollfunc)handle_zoom, map);
 	mlx_loop(map->mlx);
-	
-	//mlx_scroll_hook(map->mlx,ft_hook_scroll,map);
-	//mlx_mouse_hook(map->mlx,ft_hook_mouse,map); 
 }  

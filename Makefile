@@ -36,7 +36,8 @@ FILES = fdf \
 		structs/tview \
 		draw_map\
 		bresenham\
-		split_str
+		split_str\
+		rescale
 
 
 # FILES_ADD

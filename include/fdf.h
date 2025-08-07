@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:05:57 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/06 14:27:59 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/07 20:26:07 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_map_mdata
 	double		h_center_pt;
 	double		w_center_pt;
 	void		*window;
-	void		*img_addr;
+	double		scale;
 	
 	mlx_t		*mlx;
 	mlx_image_t	*img;
@@ -110,6 +110,10 @@ void ft_bresenham(t_map *map, t_node p0, t_node p1 );
 void fdf_mlx_init(t_map *map);
 void draw_map(t_map *map);
 char	**ft_split_str(char const *s,const char *c);
+void rescale(t_map *map, double scale);
+void mult_init_scale(t_node *node, double scale);
+void fdf_traslate_view_pts(t_map *map);
+
 #endif
 
 /* 3W test.c ./MLX42/build/libmlx42.a -IMLX42/include/MLX42 -ldl -lglfw

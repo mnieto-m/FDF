@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:11:56 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/06 14:51:22 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/07 20:20:10 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,11 @@ static void	fdf_build_view_pts(t_map *map)
 		}
 	}
 }
-void mult_init_scale(t_node *node, int scale)
+void mult_init_scale(t_node *node, double scale)
 {
 	int i;
 
+	printf("%f\n", scale);
 	i = -1;
 	while(++i < 3)
 	{
@@ -93,6 +94,7 @@ void fdf_escale_view_pts(t_map *map)
 	int y;
 	int idx;
 	
+	map->scale = 1.0;
 	printf("scale view pts\n");
 	x = -1;
 	while(++x < map->row)
@@ -185,9 +187,7 @@ void 	init_map_mlx(char *str, t_map **map)
 	len_row = 0;
 	fd = open(str, O_RDONLY);
 	if (fd < 1)
-		fdf_print_error(str); // map en null
-	// NOTE: len_row is col
-	// NOTE: int *row can be directly &(map->row) (the same for col)
+		fdf_print_error(str);
 	if (count_struct(&row, &len_row, fd) != TRUE)
 		fdf_exit_error(NULL, NULL); // map es null
 	//printf( "FILAS FINALES:%d\n",(row));
@@ -200,7 +200,6 @@ void 	init_map_mlx(char *str, t_map **map)
 	if (read_map(str, *map, fd) != TRUE)
 		fdf_exit_error(NULL, *map);
 	fdf_build_view_pts(*map);
-	
 	fdf_escale_view_pts(*map);
 	fdf_traslate_view_pts(*map);
 
