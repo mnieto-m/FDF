@@ -6,15 +6,15 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:52:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/02 22:03:00 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:06:00 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-static int		ft_get_val(char c, char *base)
+static int	ft_get_val(char c, char *base)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (base[i])
@@ -28,13 +28,13 @@ static int		ft_get_val(char c, char *base)
 
 long	ft_atoi_base(char *str, char *base_from)
 {
-	int i;
-	long nb;
-	int power;
-	int	base_len;
-	int hex_base;
-	
-	hex_base  = 0;
+	int		i;
+	long	nb;
+	int		power;
+	int		base_len;
+	int		hex_base;
+
+	hex_base = 0;
 	nb = 0;
 	power = 1;
 	base_len = ft_strlen(base_from);

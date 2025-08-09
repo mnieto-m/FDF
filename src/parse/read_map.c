@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:00:27 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/08/06 12:10:06 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/08 16:01:19 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-// NOTE: maybe add this standalone as an util
 static char	*ft_strjoin_free(char *s1, char *s2)
 {
 	size_t	l1;
@@ -25,7 +24,7 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	l2 = ft_strlen(s2);
 	if ((l1 + l2) == 0)
 		return (NULL);
-	str = (ft_calloc(sizeof(char),  (l1 + l2 + 1)));
+	str = (ft_calloc(sizeof(char), (l1 + l2 + 1)));
 	if (!str)
 		return (NULL);
 	str[l1 + l2] = '\0';
@@ -40,72 +39,6 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	return (str);
 }
 
-/*void	set_value(char *str, t_map *map)
-{
-	int		value_x;
-	int		value_y;
-	int		value_z;
-	long	color;
-	int		index;
-	char	**aux;
-	int		i;
-
-	value_x = 0;
-	value_z = 0;
-	index = 0;
-	aux = ft_split(str, ' ');
-	while (value_x != (map)->row)
-	{
-		value_y = 0;
-		index = value_x * (map)->len_row + value_y;
-		while(value_y < (map)->len_row)
-		{
-			printf("perro\n");
-			(map)->tab[index].xyz[0] = value_x;
-			map->tab[index].xyz[1] = value_y;
-			(map)->tab[index].xyz[2] = ft_atoi(aux[value_x]);
-			if (ft_strchr(*aux,','))
-			{
-				color = ft_atoi_base(aux[value_x], HEXADECIMAL);
-				printf("%zu", color);
-			}
-			else
-			{
-				color = ft_atoi_base("0xFFFFFF", HEXADECIMAL);
-				printf("%zu", color);
-			}
-			value_y ++;
-		}
-		printf("\n");
-		value_x++;
-	}
-}*/
-// TODO: this can be added to Libft as is a general function
-/* static char	*ft_replace_char(char find, char replace, char *str)
-{
-	int i;
-
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == find)
-		{
-			str[i] = replace;
-		}
-	}
-	return (str);
-} */
-void printf_split(char **str)
-{
-	int i;
-	i=0;
-	while (str)
-	{
-		printf(" valores de aux%s\n",str[i]);
-		i++;	
-	}
-}
-// NOTE: refactor this function on the fdf_tnode_init
 static void	set_value(char *str, t_map *map)
 {
 	int		i;
@@ -114,17 +47,14 @@ static void	set_value(char *str, t_map *map)
 	char	**aux;
 
 	aux = ft_split_str(str, "\n ");
-	//printf("total: rows: %i, cols: %i\n", map->row, map->len_row);
-	//printf_split(aux);
 	if (!aux)
 		fdf_exit_error(NULL, map);
-	row = -1; // row
+	row = -1;
 	while (++row < map->row)
 	{
-		col = -1; // col
+		col = -1;
 		while (++col < map->len_row)
 		{
-			//printf("row: %i, col: %i\n", row, col);
 			fdf_tnode_init(row, col, aux, map);
 		}
 	}
@@ -140,21 +70,16 @@ int	read_map(char *str, t_map *map, int fd)
 	char		*aux;
 	int			flag;
 
-	printf("read map\n");
 	flag = TRUE;
 	fd = open(str, O_RDONLY);
 	if (fd < 1)
-		fdf_exit_error(NULL,map);
+		fdf_exit_error(NULL, map);
 	aux = get_next_line(fd);
 	while (aux)
 	{
 		buffer = ft_strjoin_free(buffer, aux);
 		aux = get_next_line(fd);
 	}
-	//printf("%s\n", buffer);
-	//printf("FILAS:%i\n", map->row);
-	//rintf("COLUMANAS:%i\n", map->len_row);
-	
 	set_value(buffer, map);
 	free(buffer);
 	buffer = NULL;

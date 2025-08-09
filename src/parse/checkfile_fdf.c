@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkfile_fdf.c                                        :+:      :+:    :+:   */
+/*   checkfile_fdf.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:59:01 by mnieto-m          #+#    #+#             */
-/*   Updated: 2024/11/08 18:05:32 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:00:13 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	checkfile_fdf(char *str)
 {
-	char *fdf;
-	char *aux;
-	size_t i;
+	char	*fdf;
+	char	*aux;
+	size_t	i;
 
 	fdf = ".fdf";
-
 	i = ft_strlen(str);
 	aux = ft_strnstr(str, fdf, i);
-
 	if (aux == &str[(i - 4)])
 		return (EXIT_SUCCESS);
 	ft_putstr_fd(strerror(EINVAL), 1);

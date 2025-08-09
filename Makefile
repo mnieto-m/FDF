@@ -27,17 +27,17 @@ FILES = fdf \
 		error/ft_error \
 		utils/ft_atoi_base \
 		mlx/hooks \
-		mlx/ft_print_img \
 		matrix/isometric \
 		matrix/matrix_op \
-		matrix/matrix_projection \
 		structs/tmap \
 		structs/tnode \
 		structs/tview \
 		draw_map\
 		bresenham\
 		split_str\
-		rescale
+		rescale\
+		scale\
+		translation
 
 
 # FILES_ADD

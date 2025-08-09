@@ -6,49 +6,37 @@
 /*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:02:10 by mnieto-m          #+#    #+#             */
-/*   Updated: 2025/07/21 16:14:56 by mnieto-m         ###   ########.fr       */
+/*   Updated: 2025/08/08 15:54:16 by mnieto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-/*
-static void	ft_free_map(t_node *tab,t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while(i < ((map)->len_row * (map)->row))
-	{
-		if(&tab[i])
-			free(&tab[i]);
-	}
-	free(map);
-} */
-// NOTE: can be static
 void	fdf_print_error(char *str)
 {
 	perror(str);
 	exit(EXIT_FAILURE);
 }
 
-// NOTE: delete
-// void	fail_read(char *str, t_map *map)
-// {
-// 	if (map)
-// 		free(map); // FREE t_node y t_mlx antes
-// 	perror(str);
-// 	exit(EXIT_FAILURE);
-// }
+void	fdf_exit_esc(t_map *map)
+{
+	if (map == NULL)
+		exit(EXIT_FAILURE);
+	if (map->mlx != NULL)
+		fdf_tmlx_free(map);
+	if (map || map != NULL)
+		free(map);
+	exit(EXIT_SUCCESS);
+}
 
 void	fdf_exit_error(char *str, t_map *map)
 {
-	if(map == NULL)
+	if (map == NULL)
 		exit(EXIT_FAILURE);
-	if(map->mlx != NULL)
+	if (map->mlx != NULL)
 		fdf_tmlx_free(map);
 	if (map || map != NULL)
-		free(map); // FREE t_node y t_mlx antes
+		free(map);
 	if (str)
 		fdf_print_error(str);
 	exit(EXIT_FAILURE);
@@ -56,9 +44,8 @@ void	fdf_exit_error(char *str, t_map *map)
 
 void	fdf_tmlx_free(t_map *map)
 {
-	
-	if (map->img !=NULL)
+	if (map->img != NULL)
 		mlx_delete_image(map->mlx, map->img);
-	if (map->mlx!= NULL)
+	if (map->mlx != NULL)
 		mlx_terminate(map->mlx);
 }

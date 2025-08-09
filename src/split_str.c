@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_str.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/09 11:38:51 by mnieto-m          #+#    #+#             */
+/*   Updated: 2025/08/09 11:41:22 by mnieto-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
 static void	ft_dfree(char **tab, int i)
@@ -12,7 +24,9 @@ static void	ft_dfree(char **tab, int i)
 
 static int	ft_isset(char ch, const char *set)
 {
-	int k = 0;
+	int	k;
+
+	k = 0;
 	while (set[k])
 	{
 		if (ch == set[k])
@@ -24,49 +38,31 @@ static int	ft_isset(char ch, const char *set)
 
 static int	ft_numbword(const char *s, const char *c)
 {
-	int i = 0;
-	int j = 0;
-	int numbword = 0;
+	int	i;
+	int	j;
+	int	numbword;
 
+	i = 0;
+	j = 0;
+	numbword = 0;
 	while (s[i])
 	{
 		while (s[i] && ft_isset(s[i], c))
 			i++;
-
 		j = i;
 		while (s[j] && !ft_isset(s[j], c))
 			j++;
-
-		if (j > i) 
+		if (j > i)
 			numbword++;
-
 		i = j;
 	}
 	return (numbword);
 }
 
-/* char	*ft_strchr(const char *s,str c)
+char	*ft_strstr(const char *s, const char *c)
 {
 	int	i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
-	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if (s[i] != (unsigned char)c)
-		return (0);
-	return ((char *)&s[i]);
-} */
-
-char *ft_strstr(const char *s,const char *c)
-{
-	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	if (!s)
@@ -85,7 +81,7 @@ char *ft_strstr(const char *s,const char *c)
 	return ((char *)&s[i]);
 }
 
-char	**ft_split_str(char const *s,const char *c)
+char	**ft_split_str(char const *s, const char *c)
 {
 	int		lword;
 	int		i;
@@ -97,7 +93,7 @@ char	**ft_split_str(char const *s,const char *c)
 		return (NULL);
 	while (*s)
 	{
-		while ( *s && ft_isset(*s, c) )
+		while (*s && ft_isset(*s, c))
 			s++;
 		if (*s)
 		{
@@ -113,6 +109,3 @@ char	**ft_split_str(char const *s,const char *c)
 	}
 	return (tab);
 }
-/*
-	*Falta cambiar el split contar las palabras/ tokens y ya estaria y porbar 
-*/

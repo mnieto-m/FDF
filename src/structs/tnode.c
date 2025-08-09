@@ -1,67 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tnode.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnieto-m <mnieto-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/08 16:03:33 by mnieto-m          #+#    #+#             */
+/*   Updated: 2025/08/09 12:18:20 by mnieto-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
-
-/**
-	{
-		int			xyz[3];
-		int			w_xyz[2];
-		long		color;
-	}
- *
- */
-
-void	fdf_tnodes_print_xyz(int rows, int cols, t_node *nodes)
-{
-	int		x;
-	int		y;
-	int		idx;
-	t_node	pt;
-
-	x = 0;
-	while (x < rows)
-	{
-		y = 0;
-		while (y < cols)
-		{
-			idx = (x * cols) + y;
-			pt = nodes[idx];
-			printf("\t\t(%i,%i,%i), %li", pt.xyz[0], pt.xyz[1], pt.xyz[2],pt.color);
-			y++;
-		}
-		printf("\n");
-		x++;
-	}
-}
-
-void	fdf_tnodes_print_w_xy(int rows, int cols, t_node *nodes)
-{
-	int		x;
-	int		y;
-	int		idx;
-	t_node	pt;
-
-	x = 0;
-	while (x < rows)
-	{
-		y = 0;
-		while (y < cols)
-		{
-			idx = (x * rows) + y;
-			pt = nodes[idx];
-			printf("\t\t(%f,%f,%f)", pt.w_xyz[0], pt.w_xyz[1], pt.w_xyz[2]);
-			y++;
-		}
-		printf("\n");
-		x++;
-	}
-}
-//funcion para imprimir una array de strings (despues de un split)
-void printf_split2(char **inputs){
-	while (*inputs){
-		printf("\t%s\n", *inputs);
-		inputs++;
-	}
-}
-
 
 void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 {
@@ -74,23 +23,20 @@ void	fdf_tnode_init(int row, int col, char **inputs, t_map *map)
 	idx = (row * map->len_row) + col;
 	map->tab[idx].xyz[0] = row;
 	map->tab[idx].xyz[1] = col;
-	// printf_split2(inputs);
-	//printf("idx: %d\n", idx);
-	map->tab[idx].xyz[2] = ft_atoi_signal(inputs[idx], &z_flag); // Z_SCALE
-	//printf("z: %d\n", map->tab[idx].xyz[2]);
+	map->tab[idx].xyz[2] = ft_atoi_signal(inputs[idx], &z_flag);
 	if (z_flag == -1)
 		fdf_exit_error(NULL, map);
 	comma_ptr = ft_strchr(inputs[idx], ',');
 	if (!comma_ptr)
-	{
 		map->tab[idx].color = ft_atoi_base("0XFFFFFF", HEXADECIMAL);
-	}
 	else
 	{
 		color_comma_idx = comma_ptr - inputs[idx];
 		if (ft_strncmp(inputs[idx] + color_comma_idx + 1, "0X", 2) == 0)
-			map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx + 1, HEXADECIMAL);
+			map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx
+					+ 1, HEXADECIMAL);
 		else
-			map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx + 1, hexadecimal);
+			map->tab[idx].color = ft_atoi_base(inputs[idx] + color_comma_idx
+					+ 1, hexadecimal);
 	}
 }
